@@ -1,9 +1,10 @@
-import { FaGithub, FaRegKeyboard, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaRegKeyboard, FaTwitter, FaLinkedin, FaHashtag } from "react-icons/fa";
 import {
   BsFolderCheck,
   BsDownload,
   BsLayoutSidebarInset,
   BsThreeDotsVertical,
+  BsSearch
 } from "react-icons/bs";
 
 type IconcType = {
@@ -40,4 +41,12 @@ export const SlideIcon = ({ style }: IconcType) => {
 
 export const DoteMenuIcon = ({ style }: IconcType) => {
   return <BsThreeDotsVertical className={`${style}`} />;
+};
+
+export const SearchIcon = ({ style }: IconcType) => {
+  return <BsSearch className={`${style}`} />;
+};
+
+export const HashIcon = ({ style }: IconcType) => {
+  return <FaHashtag className={`${style}`} />;
 };

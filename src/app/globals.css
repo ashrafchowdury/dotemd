@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
+  html{
+    @apply scroll-smooth
+  }
   body {
-    @apply bg-[#0B0B22] text-white !overflow-x-hidden;
+    @apply bg-[#0B0B22] text-white !overflow-x-hidden scroll-smooth;
   }
   .pageLinks a {
     @apply py-[6px] px-4 rounded-lg hover:bg-glass;
@@ -12,7 +16,24 @@
   a {
     @apply flex items-center;
   }
+  .doc p {
+    @apply my-5 leading-8;
+  }
+  .doc li {
+    @apply list-disc my-3 mx-6;
+  }
+  .doc h2 {
+    @apply lg:text-4xl font-bold mb-6 flex items-center cursor-pointer translate-x-[-45px];
+  }
+
+  .doc h3 {
+    @apply lg:text-2xl font-bold mt-8 flex items-center cursor-pointer translate-x-[-42px];
+  }
+  .doc .docLine {
+    @apply my-12 w-full h-[1px] bg-glass text-glass;
+  }
 }
+
 .glass {
   position: fixed;
   z-index: -1;
