@@ -2,10 +2,9 @@ import "./globals.css";
 import { Noto_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import GlassBg from "@/components/GlassBg";
 const notoFont = Noto_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"], 
+  subsets: ["latin"],
 });
 
 export const metadata = {
@@ -23,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${notoFont.className} xl:w-[1250px] lg:w-[1020px] md:w-[750px] sm:w-[550px] w-[95%] mx-auto`}
       >
-        <GlassBg />
+        <div className="glass fixed -z-40 top-0 left-0 right-0 bottom-0"></div>
         <Navbar />
         {children}
         <Footer />

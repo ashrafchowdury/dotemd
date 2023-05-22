@@ -31,7 +31,7 @@ const Footer = () => {
             <p className="text-sm text-slate-400 mb-6 md:text-start text-center">
               About
             </p>
-            <div className="md:text-[16px] text-sm flex flex-col md:items-start items-center space-y-3 mt-4 ">
+            <div className="md:text-[16px] text-sm flex flex-col md:items-start items-center space-y-5 mt-4 ">
               <Link href="/">Home</Link>
               <Link href="/">Feaures</Link>
               <Link href="/about">About Us</Link>
@@ -44,7 +44,7 @@ const Footer = () => {
             <p className="text-sm text-slate-400 mb-6 md:text-start text-center">
               Service
             </p>
-            <div className="md:text-[16px] text-sm flex flex-col md:items-start items-center space-y-3 mt-4 ">
+            <div className="md:text-[16px] text-sm flex flex-col md:items-start items-center space-y-5 mt-4 ">
               <Link href="/editor">Create .md file</Link>
               <Link href="/templates">Templates</Link>
               <Link href="/editor">Open Editor</Link>

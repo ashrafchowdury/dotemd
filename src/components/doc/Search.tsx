@@ -22,25 +22,25 @@ const Search = () => {
   };
 
   return (
-    <div className="relative w-full mt-16">
-      <SearchIcon style="absolute top-4 left-4" />
+    <div className="relative w-full lg:mt-16 mt-10">
+      <SearchIcon style="absolute md:top-[14px] top-4 left-4 md:text-[16px] text-sm" />
       <input
         type="search"
         placeholder="Search what you want"
-        className="w-[70%] py-[10px] px-9 rounded-lg border-2 border-glassBorder bg-glass"
+        className="lg:w-[70%] md:w-[90%] w-full md:text-[16px] text-sm py-[10px] md:px-10 px-9 rounded-lg border-2 border-glassBorder bg-glass"
         ref={searchRef}
         onChange={handleSearchData}
         onFocus={handleOpenSearchList}
       />
       {dropdown && (
-        <div className="w-[70%] h-[220px] absolute top-16 flex flex-col space-y-2 rounded-lg p-4 bg-glass overflow-auto">
+        <div className="lg:w-[70%] md:w-[90%] w-full lg:h-[220px] h-[180px] absolute top-16 flex flex-col space-y-2 rounded-lg p-4 bg-glass overflow-auto">
           {searchedData.map((parentData, parentInd) => {
             return (
               <>
                 <a
                   href={`#${parentData.parent}`}
                   key={parentInd}
-                  className="capitalize font-medium hover:bg-glassBorder px-3 py-2 rounded-lg"
+                  className="capitalize md:text-[16px] text-sm font-medium hover:bg-glassBorder px-3 py-2 rounded-lg"
                   onClick={() => setDropdown(false)}
                 >
                   <HashIcon style="mr-3" /> {parentData.parent}
@@ -50,7 +50,7 @@ const Search = () => {
                     <a
                       key={childInd}
                       href={`#${childData}`}
-                      className="capitalize font-medium hover:bg-glassBorder px-3 py-2 rounded-lg"
+                      className="capitalize md:text-[16px] text-sm font-medium hover:bg-glassBorder px-3 py-2 rounded-lg"
                       onClick={() => setDropdown(false)}
                     >
                       <HashIcon style="mr-3" /> {childData}

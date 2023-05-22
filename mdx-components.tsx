@@ -7,11 +7,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Allows customizing built-in components, e.g. to add styling.
     h2: ({ children }) => (
       <h2 id={children?.toString().toLowerCase()} className=" group/item">
-        <div className=" mr-3 invisible group-hover/item:visible">
-          <Button style="!p-2">
-            <HashIcon style="text-sm" />
-          </Button>{" "}
-        </div>
+        <Button style="!p-2 mr-3 invisible group-hover/item:visible">
+          <HashIcon style="text-sm" />
+        </Button>
+
         {children}
       </h2>
     ),
