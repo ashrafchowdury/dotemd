@@ -1,10 +1,17 @@
+"use client";
 import Logo from "./ui/Logo";
 import Link from "next/link";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "./ui/Icons";
 import HorizontalLine from "./ui/HorizontalLine";
 import Badge from "./ui/Badge";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  if (pathname == "/editor") {
+    return null;
+  }
   return (
     <footer>
       <section className="w-full flex md:flex-row flex-col md:items-start items-center justify-between ">

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 type ButtonType = {
   children: ReactNode;
-  onclick?: () => void;
+  onclick?: any;
   style?: string;
   disble?: boolean;
 };

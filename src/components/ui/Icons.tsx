@@ -1,10 +1,18 @@
-import { FaGithub, FaRegKeyboard, FaTwitter, FaLinkedin, FaHashtag } from "react-icons/fa";
+import {
+  FaGithub,
+  FaRegKeyboard,
+  FaTwitter,
+  FaLinkedin,
+  FaHashtag,
+} from "react-icons/fa";
 import {
   BsFolderCheck,
   BsDownload,
   BsLayoutSidebarInset,
   BsThreeDotsVertical,
-  BsSearch
+  BsSearch,
+  BsTrash,
+  BsFileEarmarkText,
 } from "react-icons/bs";
 
 type IconcType = {
@@ -49,4 +57,12 @@ export const SearchIcon = ({ style }: IconcType) => {
 
 export const HashIcon = ({ style }: IconcType) => {
   return <FaHashtag className={`${style}`} />;
+};
+
+export const TrashIcon = ({ style }: IconcType) => {
+  return <BsTrash className={`${style}`} />;
+};
+
+export const FileIcon = ({ style }: IconcType) => {
+  return <BsFileEarmarkText className={`${style}`} />;
 };
