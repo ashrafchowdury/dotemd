@@ -4,7 +4,7 @@ import Logo from "./ui/Logo";
 import Button from "./ui/Button";
 import { usePathname } from "next/navigation";
 import { KeyboardIcon, SlideIcon } from "./ui/Icons";
-import DropdownMenu from "./subComponent/DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
 import Badge from "./ui/Badge";
 
 const Navbar = () => {

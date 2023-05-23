@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Heading from "./ui/Heading";
+import Heading from "../ui/Heading";
 
 type FeaturesType = {
   image: string;
