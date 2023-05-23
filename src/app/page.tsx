@@ -30,7 +30,7 @@ export default function Home() {
           modi quisquam voluptates? Dolorum nam facilis cum?
         </p>
         <div className=" mt-16 flex items-center md:space-x-6 space-x-4">
-          <Button style=" bg-primary py-3 " link="/editor">
+          <Button style=" bg-primary py-3 ">
             Open Editor
           </Button>
           <Button style="py-3 ">Learn More</Button>

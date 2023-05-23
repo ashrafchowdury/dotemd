@@ -37,7 +37,7 @@ const Navbar = () => {
           </>
         )}
 
-        <Button style="lg:block hidden" link="/login">
+        <Button style="lg:block hidden">
           Log In
         </Button>
         <DropdownMenu />
