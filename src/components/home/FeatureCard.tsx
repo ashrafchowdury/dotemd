@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { SaveIcon, KeyboardIcon, DownloadIcon } from "./ui/Icons";
+import { SaveIcon, KeyboardIcon, DownloadIcon } from "../ui/Icons";
 
 type FeatureCardType = {
   icon: ReactNode;

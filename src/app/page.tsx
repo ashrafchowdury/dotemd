@@ -1,9 +1,9 @@
-import FeatureCard from "@/components/FeatureCard";
-import Features from "@/components/Features";
+import FeatureCard from "@/components/home/FeatureCard";
+import Features from "@/components/home/Features";
 import Heading from "@/components/ui/Heading";
 import Label from "@/components/ui/Label";
-import Example from "@/components/Example";
-import Fqa from "@/components/Fqa";
+import Example from "@/components/home/Example";
+import Fqa from "@/components/home/Fqa";
 import { GithubIcon } from "@/components/ui/Icons";
 import HorizontalLine from "@/components/ui/HorizontalLine";
 import Button from "@/components/ui/Button";

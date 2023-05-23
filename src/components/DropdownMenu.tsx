@@ -1,39 +1,23 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
-import { DoteMenuIcon } from "../ui/Icons";
+import { DoteMenuIcon } from "./ui/Icons";
 import Link from "next/link";
-import Button from "../ui/Button";
-import HorizontalLine from "../ui/HorizontalLine";
+import Button from "./ui/Button";
+import HorizontalLine from "./ui/HorizontalLine";
+import useDropdown from "@/hooks/useDropdown";
 
 const DropdownMenu = () => {
-  const [menu, setmenu] = useState(false);
+  const { dropdown, setDropdown } = useDropdown();
 
-  const handleWindowClick = useCallback((event: MouseEvent) => {
-    if (
-      event.target &&
-      !(event.target as HTMLDivElement).closest(".relative")
-    ) {
-      setmenu(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("click", handleWindowClick);
-
-    return () => {
-      window.removeEventListener("click", handleWindowClick);
-    };
-  }, [handleWindowClick]);
   return (
     <>
       <div className="relative lg:hidden md:block">
         <Button
           style="!p-2"
-          onclick={() => (menu ? setmenu(false) : setmenu(true))}
+          onclick={() => (dropdown ? setDropdown(false) : setDropdown(true))}
         >
           <DoteMenuIcon />
         </Button>
-        {menu && (
+        {dropdown && (
           <div className="absolute z-10 w-[250px] right-1 origin-top-right mt-2 rounded-lg bg-glass">
             <div className="px-1 py-1 shadow-md rounded-lg flex flex-col ">
               <p className="px-3 mt-2 overflow-hidden whitespace-nowrap">
