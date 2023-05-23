@@ -7,6 +7,7 @@ import Fqa from "@/components/home/Fqa";
 import { GithubIcon } from "@/components/ui/Icons";
 import HorizontalLine from "@/components/ui/HorizontalLine";
 import Button from "@/components/ui/Button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -30,9 +31,10 @@ export default function Home() {
           modi quisquam voluptates? Dolorum nam facilis cum?
         </p>
         <div className=" mt-16 flex items-center md:space-x-6 space-x-4">
-          <Button style=" bg-primary py-3 ">
-            Open Editor
-          </Button>
+          <Link href="/editor">
+            <Button style=" bg-primary py-3 ">Open Editor</Button>
+          </Link>
+
           <Button style="py-3 ">Learn More</Button>
         </div>
       </header>
