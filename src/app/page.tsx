@@ -8,6 +8,7 @@ import { GithubIcon } from "@/components/ui/Icons";
 import HorizontalLine from "@/components/ui/HorizontalLine";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import { githubLink } from "@/utils/socialLinks";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Label
           icon={<GithubIcon style=" text-lg mr-2" />}
           name="View Github Repository"
+          link={githubLink}
         />
         <h1 className=" lg:text-6xl md:text-5xl sm:text-4xl text-3xl lg:leading-[70px] font-bold mt-16 mb-6">
           It takes only a few minutes to create your{" "}
@@ -34,8 +36,9 @@ export default function Home() {
           <Link href="/editor">
             <Button style=" bg-primary py-3 ">Open Editor</Button>
           </Link>
-
-          <Button style="py-3 ">Learn More</Button>
+          <Link href="/doc">
+            <Button style="py-3 ">Learn More</Button>
+          </Link>
         </div>
       </header>
 
@@ -97,10 +100,14 @@ export default function Home() {
           We have prepared everything, it is time for you to tell the problem
         </h3>
         <div className=" flex items-center space-x-4 lg:mt-0 mt-12">
-          <Button style="bg-primary md:py-4 py-3 xl:px-10 md:px-8">
-            Open Editor
-          </Button>
-          <Button style="md:py-4 py-3 xl:px-10 md:px-8">Learn More</Button>
+          <Link href="/editor">
+            <Button style="bg-primary md:py-4 py-3 xl:px-10 md:px-8">
+              Open Editor
+            </Button>
+          </Link>
+          <Link href="/doc">
+            <Button style="md:py-4 py-3 xl:px-10 md:px-8">Learn More</Button>
+          </Link>
         </div>
       </section>
 

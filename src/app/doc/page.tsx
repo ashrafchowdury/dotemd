@@ -5,6 +5,7 @@ import Search from "@/components/doc/Search";
 import HorizontalLine from "@/components/ui/HorizontalLine";
 import { GithubIcon } from "@/components/ui/Icons";
 import Label from "@/components/ui/Label";
+import { githubLink } from "@/utils/socialLinks";
 
 const page = () => {
   return (
@@ -14,6 +15,7 @@ const page = () => {
           <Label
             icon={<GithubIcon style=" text-lg mr-2" />}
             name="View Github Repository"
+            link={githubLink}
           />
           <h1 className=" lg:text-6xl md:text-5xl sm:text-4xl text-3xl lg:leading-[70px] md:leading-[60px] font-bold mt-10 mb-4">
             Learn how to use the editor
