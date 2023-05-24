@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GithubIcon } from "@/components/ui/Icons";
 import Button from "@/components/ui/Button";
 import HorizontalLine from "@/components/ui/HorizontalLine";
+import Link from "next/link";
 
 const Page = () => {
   const [email, setemail] = useState("");
@@ -50,6 +51,12 @@ const Page = () => {
           onChange={(e) => setpassword(e.target.value)}
           value={password}
         />
+        <Link
+          href="/forget"
+          className=" lg:text-sm md:text-xs opacity-80 mt-3 hover:opacity-40 duration-200"
+        >
+          Forget Password
+        </Link>
 
         <Button style="w-full bg-primary flex justify-center font-semibold rounded-lg px-4 py-3 mt-9">
           Log in

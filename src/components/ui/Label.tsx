@@ -1,18 +1,23 @@
 import { ReactNode } from "react";
-
+import Link from "next/link";
 type LabelType = {
   icon?: ReactNode;
   name: string;
   style?: string;
+  link?: string;
 };
-const Label = ({ icon, name, style }: LabelType) => {
+const Label = ({ icon, name, style, link = "/" }: LabelType) => {
   return (
-    <div
-      className={` ${style} flex items-center py-2 px-4 rounded-full bg-glass border-2 border-glassBorder cursor-pointer`}
+    <Link
+      href={link}
+      target="_blank"
+      className={` ${style} flex items-center py-2 px-4 rounded-full bg-glass cursor-pointer`}
     >
       <div>{icon}</div>
-      <span className=" md:text-sm text-xs font-semibold text-secondary">{name}</span>
-    </div>
+      <span className=" md:text-sm text-xs font-semibold text-secondary">
+        {name}
+      </span>
+    </Link>
   );
 };
 

@@ -5,6 +5,12 @@ import { GithubIcon, LinkedinIcon, TwitterIcon } from "./ui/Icons";
 import HorizontalLine from "./ui/HorizontalLine";
 import Badge from "./ui/Badge";
 import { usePathname } from "next/navigation";
+import {
+  developerLink,
+  githubLink,
+  linkedinLink,
+  twitterLink,
+} from "@/utils/socialLinks";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -22,15 +28,15 @@ const Footer = () => {
             quidem reprehenderit.
           </p>
           <div className=" flex items-center space-x-4">
-            <a href="/" target="_blank">
+            <Link href={githubLink} target="_blank">
               <GithubIcon style=" text-xl" />
-            </a>
-            <a href="/" target="_blank">
+            </Link>
+            <Link href={twitterLink} target="_blank">
               <TwitterIcon style=" text-xl" />
-            </a>
-            <a href="/" target="_blank">
+            </Link>
+            <Link href={linkedinLink} target="_blank">
               <LinkedinIcon style=" text-xl" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className=" flex items-start space-x-12 md:mt-0 mt-16">
@@ -42,9 +48,9 @@ const Footer = () => {
               <Link href="/">Home</Link>
               <Link href="/">Feaures</Link>
               <Link href="/about">About Us</Link>
-              <a href="ashrafchowdury.me" target="_blank">
+              <Link href={developerLink} target="_blank">
                 Developer
-              </a>
+              </Link>
             </div>
           </div>
           <div>
@@ -67,9 +73,9 @@ const Footer = () => {
 
       <div className=" w-full flex md:flex-row flex-col md:items-start items-center justify-between mb-5">
         <div>
-          <a href="ashrafchowdury.me" target="_blank">
+          <Link href={developerLink} target="_blank">
             Desigend & developed by Ashraf
-          </a>
+          </Link>
         </div>
         <p className="md:text-sm text-xs md:mt-0 mt-5">
           ©2023 All rights reserved by ashrafchowdury

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { GithubIcon } from "./ui/Icons";
 import DropdownMenu from "./DropdownMenu";
 import Badge from "./ui/Badge";
+import { githubLink } from "@/utils/socialLinks";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -27,12 +28,17 @@ const Navbar = () => {
         )}
       </div>
       <div className=" flex items-center">
-        <Button style="!p-2">
-          <GithubIcon />
-        </Button>
-        <div className=" w-[2px] h-6 bg-glass mx-4"></div>
+        <Link href={githubLink} target="_blank">
+          <Button style="!p-2">
+            <GithubIcon />
+          </Button>
+        </Link>
 
-        <Button style="lg:block hidden">Log In</Button>
+        <div className=" w-[2px] h-6 bg-glass mx-4"></div>
+        <Link href="/login">
+          <Button style="lg:block hidden">Log In</Button>
+        </Link>
+
         <DropdownMenu />
       </div>
     </nav>

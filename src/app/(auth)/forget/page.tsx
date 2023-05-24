@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import Link from "next/link";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -26,10 +27,16 @@ const Page = () => {
           type="email"
           name="email"
           placeholder="Enter Email Address"
-          className="w-full px-4 py-3 text-sm md:text-[16px] rounded-lg bg-glass mt-2 mb-5"
+          className="w-full px-4 py-3 text-sm md:text-[16px] rounded-lg bg-glass mt-2"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
+        <Link
+          href="/login"
+          className=" lg:text-sm md:text-xs opacity-80 mt-3 hover:opacity-40 duration-200"
+        >
+          Log In
+        </Link>
 
         <Button style="w-full bg-primary flex justify-center font-semibold rounded-lg px-4 py-3 mt-9">
           Submit
