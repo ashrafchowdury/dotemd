@@ -49,12 +49,31 @@
     @apply list-disc my-3 mx-6;
   }
   .doc h2 {
-    @apply lg:text-4xl md:text-3xl text-2xl font-bold mb-6 flex items-center cursor-pointer translate-x-[-45px] ;
+    @apply lg:text-4xl md:text-3xl text-2xl font-bold mb-6 flex items-center cursor-pointer translate-x-[-45px];
   }
   .doc h3 {
     @apply lg:text-2xl md:text-xl text-lg font-bold mt-8 flex items-center cursor-pointer translate-x-[-42px];
   }
   .doc .docLine {
     @apply md:my-12 my-8 w-full h-[1px] bg-glass text-glass;
+  }
+}
+
+/*** Editor styling section ***/
+@layer base {
+  .editor .ProseMirror {
+    @apply w-full min-h-[81vh] max-h-full bg-glass rounded-lg p-7 outline-none overflow-hidden;
+  }
+  .editor p {
+    @apply lg:text-lg md:text-[16px] text-sm md:my-2 my-1 break-all;
+  }
+  .editor .ProseMirror h1 {
+    @apply md:text-3xl text-2xl md:pb-3 pb-1 my-4 border-b border-glass break-all;
+  }
+  .editor .ProseMirror h2 {
+    @apply md:text-2xl text-xl md:pb-3 pb-1 my-4 border-b border-glass break-all;
+  }
+  .editor .ProseMirror h3 {
+    @apply md:text-[21px] text-lg my-3 break-all;
   }
 }

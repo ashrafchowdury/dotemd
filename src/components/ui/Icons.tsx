@@ -4,6 +4,7 @@ import {
   FaTwitter,
   FaLinkedin,
   FaHashtag,
+  FaTimes
 } from "react-icons/fa";
 import {
   BsFolderCheck,
@@ -13,6 +14,7 @@ import {
   BsSearch,
   BsTrash,
   BsFileEarmarkText,
+  BsClipboard2
 } from "react-icons/bs";
 
 type IconcType = {
@@ -65,4 +67,12 @@ export const TrashIcon = ({ style }: IconcType) => {
 
 export const FileIcon = ({ style }: IconcType) => {
   return <BsFileEarmarkText className={`${style}`} />;
+};
+
+export const CopyIcon = ({ style }: IconcType) => {
+  return <BsClipboard2 className={`${style}`} />;
+};
+
+export const CroseIcon = ({ style }: IconcType) => {
+  return <FaTimes className={`${style}`} />;
 };
