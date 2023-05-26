@@ -58,7 +58,9 @@ const Feature = () => {
               } lg:mt-0 mt-6 lg:w-[500px] md:w-[420px] sm:w-[380px] w-[95%]`}
             >
               <Heading label={data?.label} title={data?.title} />
-              <p className=" md:mt-8 sm:mt-6 mt-5  md:text-[16px] text-sm md:leading-7 leading-5 ">{data?.about}</p>
+              <p className=" md:mt-8 sm:mt-6 mt-5  md:text-[16px] text-sm md:leading-7 leading-5 ">
+                {data?.about}
+              </p>
             </div>
           </div>
         );
