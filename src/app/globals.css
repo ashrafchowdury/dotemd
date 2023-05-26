@@ -16,6 +16,9 @@
   a {
     @apply flex items-center;
   }
+  .toast{
+    @apply bg-[#0B0B22] text-white border border-glass
+  }
 }
 @layer utilities {
   .glass {
