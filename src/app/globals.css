@@ -79,4 +79,17 @@
   .editor .ProseMirror h3 {
     @apply md:text-[21px] text-lg my-3 break-all;
   }
+  /* style placeholder */
+  .editor .ProseMirror p.is-empty::before,
+  h1.is-empty::before,
+  h2.is-empty::before,
+  h3.is-empty::before,
+  pre.is-empty::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    padding: 0px 6px;
+    height: 0;
+    pointer-events: none;
+    float: left;
+  }
 }
