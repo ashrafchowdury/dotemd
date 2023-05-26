@@ -4,7 +4,7 @@ import {
   FaTwitter,
   FaLinkedin,
   FaHashtag,
-  FaTimes
+  FaTimes,
 } from "react-icons/fa";
 import {
   BsFolderCheck,
@@ -14,7 +14,7 @@ import {
   BsSearch,
   BsTrash,
   BsFileEarmarkText,
-  BsClipboard2
+  BsClipboard2,
 } from "react-icons/bs";
 
 type IconcType = {

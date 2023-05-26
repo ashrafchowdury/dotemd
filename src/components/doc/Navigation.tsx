@@ -6,7 +6,8 @@ const Navigation = () => {
   return (
     <aside className=" lg:w-[280px] sticky lg:top-[80px] right-0 bg-glass border-2 border-glassBorder pb-2 rounded-lg lg:block hidden">
       <p className="text-sm font-semibold my-4 mx-5 flex items-center justify-between group/item ">
-        Table of Contents <span className=" invisible group-hover/item:visible">^.^</span>
+        Table of Contents{" "}
+        <span className=" invisible group-hover/item:visible">^.^</span>
       </p>
       <HorizontalLine style="my-4" />
       <div className=" flex flex-col space-y-1">

@@ -1,4 +1,30 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run build
+echo '🏗️ Styling, testing and building the application before committing'
+
+# Check Prettier standards
+npm run check-format ||
+(
+    echo '❌ Prettier Check Failed. ❌
+         Run npm run format, add changes and try commit again.';
+    false;
+)
+
+
+# Check tsconfig standards
+npm run check-types ||
+(
+    echo '❌ Failed Type check. ❌'
+    false;
+)
+
+
+npm run build ||
+(
+    echo '❌ Next build failed: View the errors above to see why. ❌'
+    false;
+)
+
+# If everything passes... Now we can commit
+echo '✅✅✅✅ Eveything looks good ✅✅✅✅'
