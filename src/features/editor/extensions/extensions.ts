@@ -1,6 +1,13 @@
 import StarterKit from "@tiptap/starter-kit";
-import Heading from "@tiptap/extension-heading";
+import ListItem from "@tiptap/extension-list-item";
+import OrderedList from "@tiptap/extension-ordered-list";
 import Placeholder from "@tiptap/extension-placeholder";
+import Heading from "@tiptap/extension-heading";
+import CodeBlock from "@tiptap/extension-code-block";
+import Blockquote from "@tiptap/extension-blockquote";
+import Gapcursor from "@tiptap/extension-gapcursor";
+
+import { TypeSuggestion } from "../selectors/suggestion";
 
 export const extensions = [
   StarterKit.configure({
@@ -35,4 +42,10 @@ export const extensions = [
       }
     },
   }),
+  ListItem,
+  OrderedList,
+  CodeBlock,
+  Blockquote,
+  Gapcursor,
+  TypeSuggestion,
 ];

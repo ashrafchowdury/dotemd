@@ -15,6 +15,11 @@ import {
   BsTrash,
   BsFileEarmarkText,
   BsClipboard2,
+  BsListUl,
+  BsListOl,
+  BsListCheck,
+  BsQuote,
+  BsCodeSlash,
 } from "react-icons/bs";
 
 type IconcType = {
@@ -75,4 +80,24 @@ export const CopyIcon = ({ style }: IconcType) => {
 
 export const CroseIcon = ({ style }: IconcType) => {
   return <FaTimes className={`${style}`} />;
+};
+
+export const BulletListIcon = ({ style }: IconcType) => {
+  return <BsListUl className={`${style}`} />;
+};
+
+export const NumListIcon = ({ style }: IconcType) => {
+  return <BsListOl className={`${style}`} />;
+};
+
+export const CheckListIcon = ({ style }: IconcType) => {
+  return <BsListCheck className={`${style}`} />;
+};
+
+export const CodeIcon = ({ style }: IconcType) => {
+  return <BsCodeSlash className={`${style}`} />;
+};
+
+export const BlockQuoteIcon = ({ style }: IconcType) => {
+  return <BsQuote className={`${style}`} />;
 };

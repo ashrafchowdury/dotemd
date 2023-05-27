@@ -65,7 +65,7 @@
 /*** Editor styling section ***/
 @layer base {
   .editor .ProseMirror {
-    @apply w-full min-h-[81vh] max-h-full bg-glass rounded-lg p-7 outline-none overflow-hidden;
+    @apply w-full min-h-[81vh] max-h-full bg-glass rounded-lg md:p-7 p-4 outline-none overflow-hidden;
   }
   .editor p {
     @apply lg:text-lg md:text-[16px] text-sm md:my-2 my-1 break-all;
@@ -79,6 +79,30 @@
   .editor .ProseMirror h3 {
     @apply md:text-[21px] text-lg my-3 break-all;
   }
+
+  .editor ul,
+  ol {
+    @apply mx-3 my-5;
+  }
+  .editor ul li {
+    @apply text-lg px-1 list-disc;
+  }
+  .editor ol li {
+    @apply text-lg px-1 list-decimal;
+  }
+  .editor blockquote p {
+    @apply border-l-4 border-glass my-2 mx-3 py-1 px-2;
+  }
+  .editor blockquote p {
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+  .editor p code {
+    @apply px-2 py-1 bg-glass rounded-lg;
+  }
+  .editor pre {
+    @apply !bg-glass md:!p-5 !p-3 md:text-[16px] text-sm !rounded-lg;
+  }
+
   /* style placeholder */
   .editor .ProseMirror p.is-empty::before,
   h1.is-empty::before,
@@ -91,5 +115,11 @@
     height: 0;
     pointer-events: none;
     float: left;
+  }
+  .selection::-webkit-scrollbar-thumb {
+    @apply bg-glass;
+  }
+  .selection button {
+    @apply w-full md:my-2 my-3 text-start duration-500;
   }
 }

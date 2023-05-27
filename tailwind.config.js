@@ -13,6 +13,7 @@ module.exports = {
         glassBorder: "rgba(255, 255, 255, 0.25)",
         primary: "#6016FC",
         secondary: "#16FCD2",
+        dark: "#0B0B22",
       },
     },
   },
