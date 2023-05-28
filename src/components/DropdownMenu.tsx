@@ -18,12 +18,12 @@ const DropdownMenu = () => {
           <DoteMenuIcon />
         </Button>
         {dropdown && (
-          <div className="absolute z-10 w-[250px] right-1 origin-top-right mt-2 rounded-lg bg-glass">
+          <div className="absolute z-10 w-[250px] right-1 origin-top-right mt-2 rounded-lg bg-dark border border-glass">
             <div className="px-1 py-1 shadow-md rounded-lg flex flex-col ">
-              <p className="px-3 mt-2 overflow-hidden whitespace-nowrap">
+              <p className=" text-sm px-3 mt-2 overflow-hidden whitespace-nowrap">
                 About
               </p>
-              <HorizontalLine style="my-1" />
+              <HorizontalLine style="my-2" />
               <Link
                 href="/"
                 className="flex items-center px-3 py-2 my-1 text-sm text-start font-medium rounded-md duration-300"
