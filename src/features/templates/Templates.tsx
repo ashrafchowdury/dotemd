@@ -10,8 +10,8 @@ const Templates = () => {
     return null;
   }
   return (
-    <aside className=" absolute lg:sticky top-[62px] md:top-[71px] right-0 lg:top-0 left-0 bottom-2 lg:bg-transparent lg:mr-3 flex items-start justify-start rounded-lg">
-      <section className="flex flex-col items-start justify-start w-[90%] md:w-[280px] lg:w-[300px] lg:h-[89vh] h-full bg-glass rounded-lg py-5 px-4">
+    <aside className=" absolute lg:sticky z-50 top-[62px] md:top-[71px] right-0 lg:top-0 left-0 bottom-0 lg:bg-transparent bg-glass lg:mr-3 flex items-start justify-start rounded-lg">
+      <section className="flex flex-col items-start justify-start w-[90%] md:w-[280px] lg:w-[300px] lg:h-[89vh] h-full bg-dark border border-glass rounded-lg py-5 px-4">
         <p className="lg:mb-8 mb-6"> Templates</p>
 
         {[1, 2, 3, 4]?.map((data, ind) => {

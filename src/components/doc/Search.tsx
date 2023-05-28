@@ -33,7 +33,7 @@ const Search = () => {
         onFocus={handleOpenSearchList}
       />
       {dropdown && (
-        <div className="lg:w-[70%] md:w-[90%] w-full lg:h-[220px] h-[180px] absolute top-16 flex flex-col space-y-2 rounded-lg p-4 bg-glass overflow-auto">
+        <div className="lg:w-[70%] md:w-[90%] w-full lg:h-[220px] h-[180px] absolute top-16 flex flex-col space-y-2 rounded-lg p-4 bg-dark border border-glass overflow-auto">
           {searchedData.map((parentData, parentInd) => {
             return (
               <>
