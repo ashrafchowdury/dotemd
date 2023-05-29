@@ -102,6 +102,9 @@
   .editor pre {
     @apply !bg-glass md:!p-5 !p-3 md:text-[16px] text-sm !rounded-lg;
   }
+  .editor p a {
+    @apply !text-primary flex items-center;
+  }
 
   /* style placeholder */
   .editor .ProseMirror p.is-empty::before,
@@ -121,5 +124,9 @@
   }
   .selection button {
     @apply w-full md:my-2 my-3 text-start duration-500;
+  }
+
+  .inlineSelector button {
+    @apply lg:text-lg md:text-[16px] text-sm;
   }
 }

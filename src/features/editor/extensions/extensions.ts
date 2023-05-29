@@ -6,7 +6,9 @@ import Heading from "@tiptap/extension-heading";
 import CodeBlock from "@tiptap/extension-code-block";
 import Blockquote from "@tiptap/extension-blockquote";
 import Gapcursor from "@tiptap/extension-gapcursor";
-
+import TextAlign from "@tiptap/extension-text-align";
+import Link from "@tiptap/extension-link";
+import BubbleMenu from "@tiptap/extension-bubble-menu";
 import { TypeSuggestion } from "../selectors/suggestion";
 
 export const extensions = [
@@ -42,10 +44,23 @@ export const extensions = [
       }
     },
   }),
+  TextAlign.configure({
+    types: ["heading", "paragraph", "image"],
+  }),
+  Link.configure({
+    openOnClick: false,
+  }),
   ListItem,
   OrderedList,
   CodeBlock,
   Blockquote,
   Gapcursor,
   TypeSuggestion,
+  //
+  BubbleMenu.configure({
+    shouldShow: ({ editor }) => {
+      return editor.isActive("text");
+    },
+    pluginKey: "bubbleMenuForText",
+  }),
 ];
