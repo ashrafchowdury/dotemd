@@ -5,6 +5,8 @@ import {
   FaLinkedin,
   FaHashtag,
   FaTimes,
+  FaRegEdit,
+  FaUnlink,
 } from "react-icons/fa";
 import {
   BsFolderCheck,
@@ -20,7 +22,10 @@ import {
   BsListCheck,
   BsQuote,
   BsCodeSlash,
+  BsLink45Deg,
+  BsTypeItalic,
 } from "react-icons/bs";
+import { CiAlignRight, CiAlignCenterV, CiAlignLeft } from "react-icons/ci";
 
 type IconcType = {
   style?: string;
@@ -100,4 +105,32 @@ export const CodeIcon = ({ style }: IconcType) => {
 
 export const BlockQuoteIcon = ({ style }: IconcType) => {
   return <BsQuote className={`${style}`} />;
+};
+
+export const AlignLeftIcon = ({ style }: IconcType) => {
+  return <CiAlignLeft className={`${style}`} />;
+};
+
+export const AlignCenterIcon = ({ style }: IconcType) => {
+  return <CiAlignCenterV className={`${style}`} />;
+};
+
+export const AlignRightIcon = ({ style }: IconcType) => {
+  return <CiAlignRight className={`${style}`} />;
+};
+
+export const ItalicIcon = ({ style }: IconcType) => {
+  return <BsTypeItalic className={`${style}`} />;
+};
+
+export const LinktIcon = ({ style }: IconcType) => {
+  return <BsLink45Deg className={`${style}`} />;
+};
+
+export const UnLinktIcon = ({ style }: IconcType) => {
+  return <FaUnlink className={`${style}`} />;
+};
+
+export const EditIcon = ({ style }: IconcType) => {
+  return <FaRegEdit className={`${style}`} />;
 };
