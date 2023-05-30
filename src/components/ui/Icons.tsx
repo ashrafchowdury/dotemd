@@ -24,6 +24,7 @@ import {
   BsCodeSlash,
   BsLink45Deg,
   BsTypeItalic,
+  BsTable,
 } from "react-icons/bs";
 import { CiAlignRight, CiAlignCenterV, CiAlignLeft } from "react-icons/ci";
 
@@ -133,4 +134,8 @@ export const UnLinktIcon = ({ style }: IconcType) => {
 
 export const EditIcon = ({ style }: IconcType) => {
   return <FaRegEdit className={`${style}`} />;
+};
+
+export const TableIcon = ({ style }: IconcType) => {
+  return <BsTable className={`${style}`} />;
 };

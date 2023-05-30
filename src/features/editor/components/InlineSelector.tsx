@@ -29,9 +29,13 @@ const InlineSelector = () => {
           editor={editor}
           tippyOptions={{ duration: 100 }}
           pluginKey="bubbleMenuForText"
+          shouldShow={({ editor, view, state, oldState, from, to }) => {
+            // only show out of table
+            return !editor?.isActive("table") && from !== to;
+          }}
         >
           <section
-            className="inlineSelector flex items-center justify-between md:space-x-7 space-x-5 py-2 px-4 bg-dark border border-glass rounded-lg"
+            className="inlineSelector flex items-center justify-between space-x-2 py-1 px-2 bg-dark border border-glass rounded-lg"
             style={{ display: isLink ? "none" : "flex" }}
           >
             <button
@@ -89,7 +93,7 @@ const InlineSelector = () => {
               }
               className={`${isActive("link")}`}
             >
-              {editor.isActive("link") ? <UnLinktIcon /> : <LinktIcon />}
+              {editor?.isActive("link") ? <UnLinktIcon /> : <LinktIcon />}
             </button>
           </section>
 

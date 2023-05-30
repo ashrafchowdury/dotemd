@@ -126,7 +126,37 @@
     @apply w-full md:my-2 my-3 text-start duration-500;
   }
 
-  .inlineSelector button {
-    @apply lg:text-lg md:text-[16px] text-sm;
+  .inlineSelector button,
+  .tableSelector button {
+    @apply lg:text-[16px] md:text-sm text-xs p-2 hover:bg-glass rounded-md;
+  }
+  /***/
+  .editor .ProseMirror table {
+    @apply table-fixed m-0 overflow-hidden w-full border-collapse;
+  }
+  .editor .ProseMirror table td,
+  .editor .ProseMirror table th {
+    @apply border border-glass box-border min-w-[1em] py-2 px-1 relative align-top;
+  }
+  .editor .ProseMirror table th {
+    @apply font-bold  text-left;
+  }
+  .editor .ProseMirror table p {
+    @apply m-0;
+  }
+  .editor .ProseMirror .selectedCell:after {
+    background: rgba(200, 200, 255, 0.4);
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+  }
+  .tableWrapper {
+    padding: 1rem 0;
+    overflow-x: auto;
   }
 }
