@@ -8,7 +8,10 @@ import Blockquote from "@tiptap/extension-blockquote";
 import Gapcursor from "@tiptap/extension-gapcursor";
 import TextAlign from "@tiptap/extension-text-align";
 import Link from "@tiptap/extension-link";
-import BubbleMenu from "@tiptap/extension-bubble-menu";
+import Table from "@tiptap/extension-table";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
 import { TypeSuggestion } from "../selectors/suggestion";
 
 export const extensions = [
@@ -55,12 +58,9 @@ export const extensions = [
   CodeBlock,
   Blockquote,
   Gapcursor,
+  TableRow,
+  TableHeader,
+  TableCell,
+  Table,
   TypeSuggestion,
-  //
-  BubbleMenu.configure({
-    shouldShow: ({ editor }) => {
-      return editor.isActive("text");
-    },
-    pluginKey: "bubbleMenuForText",
-  }),
 ];

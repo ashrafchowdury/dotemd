@@ -7,10 +7,14 @@ export const toggleSelectors = (
   selectItem: (index: number) => void
 ) => {
   const itemSelect = () => selectItem(position);
+  const editorChain = () => editor.chain().focus();
 
   if (selector?.[1] === "BlockQuote") {
     itemSelect();
-    editor.chain().focus().setBlockquote().run();
+    editorChain().setBlockquote().run();
+  } else if (selector?.[1] == "Table") {
+    editorChain().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
+    itemSelect();
   }
   itemSelect();
 };

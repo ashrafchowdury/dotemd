@@ -4,6 +4,7 @@ import {
   NumListIcon,
   BlockQuoteIcon,
   CodeIcon,
+  TableIcon,
 } from "@/components/ui/Icons";
 
 const EditorFormat: TipTapEditorFormatType = {
@@ -30,6 +31,7 @@ const EditorFormat: TipTapEditorFormatType = {
     "Shift B",
   ],
   CODE: [<CodeIcon key="code" />, "Code Block", "Add Code Block", "Alt C"],
+  TABLE: [<TableIcon key="table" />, "Table", "Basic Table", "Alt T"],
 };
 
 // lists formats
@@ -59,6 +61,7 @@ const TipTapEditorFormatType = {
   },
   [EditorFormat.BLOCKQUOTE]: { type: "blockquotes" },
   [EditorFormat.CODE]: { type: "codeBlock" },
+  [EditorFormat.TABLE]: { type: "tables" },
 };
 
 export { EditorFormat, TipTapEditorFormatType };

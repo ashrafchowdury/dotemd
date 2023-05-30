@@ -11,6 +11,7 @@ export type TipTapEditorFormatType = {
   NUMBER_LIST: any;
   BLOCKQUOTE: any;
   CODE: any;
+  TABLE: any;
 };
 
 /******** Selectors.tsx ********/
