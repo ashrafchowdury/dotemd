@@ -159,4 +159,23 @@
     padding: 1rem 0;
     overflow-x: auto;
   }
+  /* editor Image stylig */
+  .editor p[style="text-align: center"]:has(img) {
+    @apply flex flex-wrap justify-center items-center;
+  }
+  .editor p[style="text-align: right"]:has(img) {
+    @apply flex flex-wrap justify-end items-center;
+  }
+  .editor p:has(img) {
+    @apply flex flex-wrap justify-start items-center;
+  }
+  .editor p img {
+    @apply mx-1 object-cover cursor-pointer;
+  }
+  .editor .ProseMirror p img[style="text-align: center"] {
+    @apply mx-auto;
+  }
+  .editor .ProseMirror p img[style="text-align: right"] {
+    @apply block float-right;
+  }
 }

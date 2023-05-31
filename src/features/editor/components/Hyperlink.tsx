@@ -4,7 +4,7 @@ import { CroseIcon } from "@/components/ui/Icons";
 import { useEditor } from "../context/useEditor";
 
 type HyperlinkType = {
-  setisLink: React.Dispatch<React.SetStateAction<boolean>>;
+  setisLink: React.Dispatch<React.SetStateAction<"link" | "media" | "">>;
 };
 
 const Hyperlink = ({ setisLink }: HyperlinkType) => {
@@ -18,7 +18,7 @@ const Hyperlink = ({ setisLink }: HyperlinkType) => {
           <p className=" md:text-sm text-xs font-meduim">🔗 Insert Link</p>{" "}
           <button
             className="  md:text-[16px] text-sm p-2 rounded-lg hover:dark:bg-darkBg duration-300"
-            onClick={() => setisLink(false)}
+            onClick={() => setisLink("")}
           >
             <CroseIcon />
           </button>
@@ -34,8 +34,8 @@ const Hyperlink = ({ setisLink }: HyperlinkType) => {
         <button
           className=" bg-primary py-1 px-3 md:!mt-7 mt-4 rounded-lg md:text-xs text-[10px]"
           onClick={() => {
-            editor?.commands.setLink({ href: link, target: "_blank" });
-            setisLink(false);
+            editor?.commands.setLink({ href: link });
+            setisLink("");
           }}
         >
           Insert Link
