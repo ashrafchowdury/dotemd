@@ -25,6 +25,8 @@ import {
   BsLink45Deg,
   BsTypeItalic,
   BsTable,
+  BsCardImage,
+  BsPlayBtnFill,
 } from "react-icons/bs";
 import { CiAlignRight, CiAlignCenterV, CiAlignLeft } from "react-icons/ci";
 
@@ -138,4 +140,11 @@ export const EditIcon = ({ style }: IconcType) => {
 
 export const TableIcon = ({ style }: IconcType) => {
   return <BsTable className={`${style}`} />;
+};
+
+export const ImageIcon = ({ style }: IconcType) => {
+  return <BsCardImage className={`${style}`} />;
+};
+export const VideoIcon = ({ style }: IconcType) => {
+  return <BsPlayBtnFill className={`${style}`} />;
 };

@@ -11,11 +11,13 @@ import {
   CodeIcon,
   LinktIcon,
   UnLinktIcon,
+  EditIcon,
 } from "@/components/ui/Icons";
 import Hyperlink from "./Hyperlink";
+import MediaResizer from "./MediaResizer";
 
 const InlineSelector = () => {
-  const [isLink, setisLink] = useState(false);
+  const [isLink, setisLink] = useState<"link" | "media" | "">("");
   const { editor } = useEditor();
 
   const isActive = (name: string | { textAlign: string }) =>
@@ -58,46 +60,62 @@ const InlineSelector = () => {
             >
               <AlignRightIcon />
             </button>
-            <button
-              onClick={() => toggleSelector().toggleBold().run()}
-              className={`${isActive("bold")}`}
-            >
-              B
-            </button>
-            <button
-              onClick={() => toggleSelector().toggleItalic().run()}
-              className={`${isActive("italic")}`}
-            >
-              <ItalicIcon />
-            </button>
-            <button
-              onClick={() => toggleSelector().sinkListItem("listItem").run()}
-              className={`${isActive("bulletList")} ${
-                editor?.isActive("bulletList") ? "" : "hidden"
-              }`}
-            >
-              <BulletListIcon />
-            </button>
 
-            <button
-              onClick={() => toggleSelector().toggleCode().run()}
-              className={`${isActive("code")}`}
-            >
-              <CodeIcon />
-            </button>
+            {!(editor.isActive("image") || editor.isActive("youtube")) && (
+              <>
+                <button
+                  onClick={() => toggleSelector().toggleBold().run()}
+                  className={`${isActive("bold")}`}
+                >
+                  B
+                </button>
+                <button
+                  onClick={() => toggleSelector().toggleItalic().run()}
+                  className={`${isActive("italic")}`}
+                >
+                  <ItalicIcon />
+                </button>
+                <button
+                  onClick={() =>
+                    toggleSelector().sinkListItem("listItem").run()
+                  }
+                  className={`${isActive("bulletList")} ${
+                    editor?.isActive("bulletList") ? "" : "hidden"
+                  }`}
+                >
+                  <BulletListIcon />
+                </button>
+
+                <button
+                  onClick={() => toggleSelector().toggleCode().run()}
+                  className={`${isActive("code")}`}
+                >
+                  <CodeIcon />
+                </button>
+              </>
+            )}
+
             <button
               onClick={() =>
                 editor.isActive("link")
                   ? editor.commands.unsetLink()
-                  : setisLink(true)
+                  : setisLink("link")
               }
               className={`${isActive("link")}`}
             >
               {editor?.isActive("link") ? <UnLinktIcon /> : <LinktIcon />}
             </button>
+
+            {/** This icons is only for image & iframe***/}
+            {(editor.isActive("image") || editor.isActive("youtube")) && (
+              <button onClick={() => setisLink("media")}>
+                <EditIcon />
+              </button>
+            )}
           </section>
 
-          {isLink && <Hyperlink setisLink={setisLink} />}
+          {isLink == "media" && <MediaResizer setisLink={setisLink} />}
+          {isLink == "link" && <Hyperlink setisLink={setisLink} />}
         </BubbleMenu>
       )}
     </>

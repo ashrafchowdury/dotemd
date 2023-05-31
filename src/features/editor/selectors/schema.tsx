@@ -5,6 +5,8 @@ import {
   BlockQuoteIcon,
   CodeIcon,
   TableIcon,
+  ImageIcon,
+  VideoIcon,
 } from "@/components/ui/Icons";
 
 const EditorFormat: TipTapEditorFormatType = {
@@ -30,6 +32,8 @@ const EditorFormat: TipTapEditorFormatType = {
     "Add quotes",
     "Shift B",
   ],
+  IMAGE: [<ImageIcon key="image" />, "Image", "Image with URL"],
+  VIDEO: [<VideoIcon key="video" />, "Video", "Embed YouTube videos"],
   CODE: [<CodeIcon key="code" />, "Code Block", "Add Code Block", "Alt C"],
   TABLE: [<TableIcon key="table" />, "Table", "Basic Table", "Alt T"],
 };
@@ -60,6 +64,8 @@ const TipTapEditorFormatType = {
     content: list,
   },
   [EditorFormat.BLOCKQUOTE]: { type: "blockquotes" },
+  [EditorFormat.IMAGE]: { type: "img" },
+  [EditorFormat.VIDEO]: { type: "ytVideo" },
   [EditorFormat.CODE]: { type: "codeBlock" },
   [EditorFormat.TABLE]: { type: "tables" },
 };

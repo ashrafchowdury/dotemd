@@ -8,10 +8,11 @@ import Blockquote from "@tiptap/extension-blockquote";
 import Gapcursor from "@tiptap/extension-gapcursor";
 import TextAlign from "@tiptap/extension-text-align";
 import Link from "@tiptap/extension-link";
-import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
+import Youtube from "@tiptap/extension-youtube";
+import { UpdatedTable, UpdatedImage } from "./updatedExtensions";
 import { TypeSuggestion } from "../selectors/suggestion";
 
 export const extensions = [
@@ -50,8 +51,23 @@ export const extensions = [
   TextAlign.configure({
     types: ["heading", "paragraph", "image"],
   }),
+
   Link.configure({
     openOnClick: false,
+    HTMLAttributes: {
+      rel: null,
+      target: "_blank",
+    },
+  }),
+  UpdatedImage.configure({
+    inline: true,
+  }),
+  Youtube.configure({
+    inline: true,
+    width: 480,
+    height: 320,
+    controls: false,
+    allowFullscreen: false,
   }),
   ListItem,
   OrderedList,
@@ -61,6 +77,6 @@ export const extensions = [
   TableRow,
   TableHeader,
   TableCell,
-  Table,
+  UpdatedTable,
   TypeSuggestion,
 ];

@@ -1,10 +1,11 @@
-import { forwardRef, ForwardedRef } from "react";
+import { forwardRef, ForwardedRef, useRef } from "react";
 import { SelectorPropsType } from "../types/selectorsTypes";
 import { useEditor } from "../context/useEditor";
 import { toggleSelectors } from "../functions/toggleSelectors";
 
 const Selectors = forwardRef(
   (props: SelectorPropsType, ref: ForwardedRef<HTMLDivElement>) => {
+    const selectorRef = useRef<any>(null);
     const { editor } = useEditor();
 
     const selectItem = (index: number) => {
@@ -23,7 +24,9 @@ const Selectors = forwardRef(
           props.items.map((item, index) => (
             <button
               key={index}
-              onClick={() => toggleSelectors(editor, item, index, selectItem)}
+              onClick={() =>
+                toggleSelectors(editor, item, index, selectItem, selectorRef)
+              }
             >
               <div className=" flex justify-between items-center">
                 <div className="flex items-center cursor-pointer">
