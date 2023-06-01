@@ -23,8 +23,8 @@ export const toggleSelectors = (
     });
 
   if (selector?.[1] === "BlockQuote") {
-    editorChain().setBlockquote().run();
     itemSelect();
+    editorChain().setBlockquote().run();
   } else if (selector?.[1] === "Check List") {
     itemSelect();
     editorChain().toggleTaskList().run();
