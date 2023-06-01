@@ -90,6 +90,17 @@
   .editor ol li {
     @apply text-lg px-1 list-decimal;
   }
+
+  .editor ul[data-type="taskList"] {
+    @apply mx-0;
+  }
+  .editor ul[data-type="taskList"] li {
+    @apply text-lg !list-none flex items-center list-outside;
+  }
+  .editor ul[data-type="taskList"] li label input {
+    @apply ring-2 ring-white focus:bg-primary checked:ring-primary mr-4;
+  }
+
   .editor blockquote p {
     @apply border-l-4 border-glass my-2 mx-3 py-1 px-2;
   }

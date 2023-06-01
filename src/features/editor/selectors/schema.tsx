@@ -7,6 +7,8 @@ import {
   TableIcon,
   ImageIcon,
   VideoIcon,
+  HorizontalRuleIcon,
+  CheckListIcon,
 } from "@/components/ui/Icons";
 
 const EditorFormat: TipTapEditorFormatType = {
@@ -26,6 +28,12 @@ const EditorFormat: TipTapEditorFormatType = {
     "Number List",
     "Shift 7",
   ],
+  CHECK_LIST: [
+    <CheckListIcon key="orderd" />,
+    "Check List",
+    "Items Check List",
+    "Shift 9",
+  ],
   BLOCKQUOTE: [
     <BlockQuoteIcon key="quote" />,
     "BlockQuote",
@@ -36,6 +44,12 @@ const EditorFormat: TipTapEditorFormatType = {
   VIDEO: [<VideoIcon key="video" />, "Video", "Embed YouTube videos"],
   CODE: [<CodeIcon key="code" />, "Code Block", "Add Code Block", "Alt C"],
   TABLE: [<TableIcon key="table" />, "Table", "Basic Table", "Alt T"],
+  RULE: [
+    <HorizontalRuleIcon key="rule" />,
+    "Divider",
+    "Horizontal Rule",
+    "Alt H",
+  ],
 };
 
 // lists formats
@@ -63,11 +77,13 @@ const TipTapEditorFormatType = {
     type: "orderedList",
     content: list,
   },
+  [EditorFormat.CHECK_LIST]: { type: "checkList" },
   [EditorFormat.BLOCKQUOTE]: { type: "blockquotes" },
   [EditorFormat.IMAGE]: { type: "img" },
   [EditorFormat.VIDEO]: { type: "ytVideo" },
   [EditorFormat.CODE]: { type: "codeBlock" },
   [EditorFormat.TABLE]: { type: "tables" },
+  [EditorFormat.RULE]: { type: "horizontalRule" },
 };
 
 export { EditorFormat, TipTapEditorFormatType };

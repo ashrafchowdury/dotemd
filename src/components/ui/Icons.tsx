@@ -7,6 +7,7 @@ import {
   FaTimes,
   FaRegEdit,
   FaUnlink,
+  FaGripLines,
 } from "react-icons/fa";
 import {
   BsFolderCheck,
@@ -19,7 +20,6 @@ import {
   BsClipboard2,
   BsListUl,
   BsListOl,
-  BsListCheck,
   BsQuote,
   BsCodeSlash,
   BsLink45Deg,
@@ -27,6 +27,7 @@ import {
   BsTable,
   BsCardImage,
   BsPlayBtnFill,
+  BsCheck2Square,
 } from "react-icons/bs";
 import { CiAlignRight, CiAlignCenterV, CiAlignLeft } from "react-icons/ci";
 
@@ -99,7 +100,7 @@ export const NumListIcon = ({ style }: IconcType) => {
 };
 
 export const CheckListIcon = ({ style }: IconcType) => {
-  return <BsListCheck className={`${style}`} />;
+  return <BsCheck2Square className={`${style}`} />;
 };
 
 export const CodeIcon = ({ style }: IconcType) => {
@@ -145,6 +146,15 @@ export const TableIcon = ({ style }: IconcType) => {
 export const ImageIcon = ({ style }: IconcType) => {
   return <BsCardImage className={`${style}`} />;
 };
+
 export const VideoIcon = ({ style }: IconcType) => {
   return <BsPlayBtnFill className={`${style}`} />;
 };
+
+export const HorizontalRuleIcon = ({ style }: IconcType) => {
+  return <FaGripLines className={`${style}`} />;
+};
+
+// export const TaskListIcon = ({ style }: IconcType) => {
+//   return <FaGripLines className={`${style}`} />;
+// };

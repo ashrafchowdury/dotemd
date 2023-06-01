@@ -23,8 +23,11 @@ export const toggleSelectors = (
     });
 
   if (selector?.[1] === "BlockQuote") {
-    itemSelect();
     editorChain().setBlockquote().run();
+    itemSelect();
+  } else if (selector?.[1] === "Check List") {
+    itemSelect();
+    editorChain().toggleTaskList().run();
   } else if (selector?.[1] == "Table") {
     editorChain().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
     itemSelect();
@@ -44,6 +47,7 @@ export const toggleSelectors = (
 
     toggleToast("YouTube Link", handleInsertVideo);
     itemSelect();
+  } else {
+    itemSelect();
   }
-  itemSelect();
 };
