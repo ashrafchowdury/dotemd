@@ -9,11 +9,13 @@ export type TipTapEditorFormatType = {
   HEADING_THREE: any;
   BULLET_LIST: any;
   NUMBER_LIST: any;
+  CHECK_LIST: any;
   BLOCKQUOTE: any;
   CODE: any;
   IMAGE: any;
   VIDEO: any;
   TABLE: any;
+  RULE: any;
 };
 
 /******** Selectors.tsx ********/

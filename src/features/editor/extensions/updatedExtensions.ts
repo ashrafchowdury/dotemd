@@ -1,7 +1,13 @@
 import Table from "@tiptap/extension-table";
 import Youtube from "@tiptap/extension-youtube";
 import Image from "@tiptap/extension-image";
+import HorizontalRule from "@tiptap/extension-horizontal-rule";
 
+export const UpdatedHorizontalRule = HorizontalRule.extend({
+  addKeyboardShortcuts() {
+    return { "Control-Alt-h": () => this.editor.commands.setHorizontalRule() };
+  },
+});
 export const UpdatedTable = Table.extend({
   addKeyboardShortcuts() {
     return {

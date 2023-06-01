@@ -12,7 +12,13 @@ import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Youtube from "@tiptap/extension-youtube";
-import { UpdatedTable, UpdatedImage } from "./updatedExtensions";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
+import {
+  UpdatedTable,
+  UpdatedImage,
+  UpdatedHorizontalRule,
+} from "./updatedExtensions";
 import { TypeSuggestion } from "../selectors/suggestion";
 
 export const extensions = [
@@ -74,9 +80,12 @@ export const extensions = [
   CodeBlock,
   Blockquote,
   Gapcursor,
+  TaskItem,
+  TaskList,
   TableRow,
   TableHeader,
   TableCell,
   UpdatedTable,
+  UpdatedHorizontalRule,
   TypeSuggestion,
 ];
