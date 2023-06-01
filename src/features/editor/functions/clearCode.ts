@@ -1,6 +1,13 @@
 import { Editor } from "@tiptap/core";
+import toaster from "@/components/ui/toaster";
 
 export const clearCode = (editor: Editor) => {
-  const conformation = window.confirm("Do you want to clear your data");
-  conformation && editor.commands.clearContent();
+  toaster({
+    title: "Clear Code",
+    about: "Do you want to clear your data",
+    btnTwo: {
+      title: "Clear Code",
+      onclcik: () => editor.commands.clearContent(),
+    },
+  });
 };

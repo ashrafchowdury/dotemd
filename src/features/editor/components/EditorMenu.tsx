@@ -12,6 +12,7 @@ import { useEditor } from "../context/useEditor";
 // functions
 import { copyCode } from "../functions/copyCode";
 import { clearCode } from "../functions/clearCode";
+import { htmlToMarkdown } from "../functions/htmlToMarkdown";
 
 const EditorMenu = () => {
   const { isTemplate, setIsTemplate, editor, minText } = useEditor();
@@ -40,7 +41,7 @@ const EditorMenu = () => {
 
         <div className=" w-[1px] h-6 bg-glass"></div>
 
-        <Button style="!p-2" onclick={() => copyCode(editor?.getHTML())}>
+        <Button style="!p-2" onclick={() => copyCode(editor)}>
           <CopyIcon />
         </Button>
 
