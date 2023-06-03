@@ -7,8 +7,10 @@ import { GithubIcon } from "./ui/Icons";
 import DropdownMenu from "./DropdownMenu";
 import Badge from "./ui/Badge";
 import { githubLink } from "@/utils/socialLinks";
+import { useAuth } from "@/context/AuthContext";
 
 const Navbar = () => {
+  const { currentUser } = useAuth();
   const pathname = usePathname();
 
   return (
@@ -35,11 +37,13 @@ const Navbar = () => {
         </Link>
 
         <div className=" w-[2px] h-6 bg-glass mx-4"></div>
-        <Link href="/login">
-          <Button style="lg:block hidden">Log In</Button>
-        </Link>
 
         <DropdownMenu />
+        {!currentUser && (
+          <Link href="/login">
+            <Button style="lg:block hidden">Log In</Button>
+          </Link>
+        )}
       </div>
     </nav>
   );
