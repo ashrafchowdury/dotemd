@@ -1,10 +1,27 @@
 "use client";
-import { useState } from "react";
+
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 const Page = () => {
-  const [email, setEmail] = useState("");
+  const { forget, isLoading, currentUser } = useAuth();
+
+  const handleUserForgetEmail = async (event: any) => {
+    event.preventDefault();
+    const email = event.target[0].value;
+    forget?.(email);
+  };
+
+  if (currentUser) {
+    return (
+      <div className="w-screen h-screen flex items-center justify-center">
+        <h1 className=" lg:text-4xl md:text-3xl text-2xl font-bold text-center">
+          Why are you here 😠
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <section className="flex flex-col lg:flex-row justify-center items-start lg:space-x-9">
@@ -17,7 +34,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="w-full sm:w-[400px]">
+      <form onSubmit={handleUserForgetEmail} className="w-full sm:w-[400px]">
         <p className=" text-[16px] md:text-lg font-medium mb-6">
           Forget Password
         </p>
@@ -28,8 +45,7 @@ const Page = () => {
           name="email"
           placeholder="Enter Email Address"
           className="w-full px-4 py-3 text-sm md:text-[16px] rounded-lg bg-glass mt-2"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          disabled={isLoading}
         />
         <Link
           href="/login"
@@ -38,10 +54,13 @@ const Page = () => {
           Log In
         </Link>
 
-        <Button style="w-full bg-primary flex justify-center font-semibold rounded-lg px-4 py-3 mt-9">
+        <Button
+          style="w-full bg-primary flex justify-center font-semibold rounded-lg px-4 py-3 mt-9"
+          disble={isLoading}
+        >
           Submit
         </Button>
-      </div>
+      </form>
     </section>
   );
 };
