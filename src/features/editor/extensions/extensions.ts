@@ -14,6 +14,7 @@ import TableRow from "@tiptap/extension-table-row";
 import Youtube from "@tiptap/extension-youtube";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
+import History from "@tiptap/extension-history";
 import {
   UpdatedTable,
   UpdatedImage,
@@ -31,6 +32,7 @@ export const extensions = [
       keepMarks: true,
       keepAttributes: false,
     },
+    history: false,
   }),
   Heading.configure({
     levels: [1, 2, 3],
@@ -75,6 +77,7 @@ export const extensions = [
     controls: false,
     allowFullscreen: false,
   }),
+  History,
   ListItem,
   OrderedList,
   CodeBlock,
