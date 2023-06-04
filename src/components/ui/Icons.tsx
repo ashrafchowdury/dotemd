@@ -30,6 +30,7 @@ import {
   BsCheck2Square,
 } from "react-icons/bs";
 import { CiAlignRight, CiAlignCenterV, CiAlignLeft } from "react-icons/ci";
+import { BiUndo, BiRedo } from "react-icons/bi";
 
 type IconcType = {
   style?: string;
@@ -155,6 +156,10 @@ export const HorizontalRuleIcon = ({ style }: IconcType) => {
   return <FaGripLines className={`${style}`} />;
 };
 
-// export const TaskListIcon = ({ style }: IconcType) => {
-//   return <FaGripLines className={`${style}`} />;
-// };
+export const UndoIcon = ({ style }: IconcType) => {
+  return <BiUndo className={`${style}`} />;
+};
+
+export const RedoIcon = ({ style }: IconcType) => {
+  return <BiRedo className={`${style}`} />;
+};

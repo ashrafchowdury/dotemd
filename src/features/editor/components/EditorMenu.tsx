@@ -7,15 +7,18 @@ import {
   KeyboardIcon,
   CopyIcon,
   CroseIcon,
+  DownloadIcon,
+  UndoIcon,
+  RedoIcon,
 } from "@/components/ui/Icons";
 import { useEditor } from "../context/useEditor";
 // functions
 import { copyCode } from "../functions/copyCode";
 import { clearCode } from "../functions/clearCode";
-import { htmlToMarkdown } from "../functions/htmlToMarkdown";
+import { downloadFile } from "../functions/downloadFile";
 
 const EditorMenu = () => {
-  const { isTemplate, setIsTemplate, editor, minText } = useEditor();
+  const { isTemplate, setIsTemplate, editor } = useEditor();
 
   return (
     <div className=" w-full flex justify-between items-center md:h-[60px] h-[50px] px-4 bg-glass rounded-lg mb-3 overflow-auto">
@@ -26,7 +29,7 @@ const EditorMenu = () => {
         </span>
       </p>
 
-      <div className=" flex items-center md:space-x-3 space-x-2">
+      <div className="editorMenu !text-sm flex items-center md:space-x-3 space-x-2">
         <Button
           style="!p-2"
           onclick={() =>
@@ -40,6 +43,20 @@ const EditorMenu = () => {
         </Button>
 
         <div className=" w-[1px] h-6 bg-glass"></div>
+
+        <Button style="!p-2" onclick={() => editor.commands.undo()}>
+          <UndoIcon />
+        </Button>
+
+        <Button style="!p-2" onclick={() => editor.commands.redo()}>
+          <RedoIcon />
+        </Button>
+
+        <div className=" w-[1px] h-6 bg-glass"></div>
+
+        <Button style="!p-2" onclick={() => downloadFile(editor)}>
+          <DownloadIcon />
+        </Button>
 
         <Button style="!p-2" onclick={() => copyCode(editor)}>
           <CopyIcon />

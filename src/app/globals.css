@@ -64,6 +64,9 @@
 
 /*** Editor styling section ***/
 @layer base {
+  .editorMenu button {
+    @apply md:text-sm text-xs;
+  }
   .editor .ProseMirror {
     @apply w-full min-h-[81vh] max-h-full bg-glass rounded-lg md:p-7 p-4 outline-none overflow-hidden;
   }
