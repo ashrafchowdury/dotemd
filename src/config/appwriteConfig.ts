@@ -1,4 +1,4 @@
-import { Client, Account } from "appwrite";
+import { Client, Account, Databases } from "appwrite";
 
 // Init SDK
 const client = new Client();
@@ -7,3 +7,4 @@ client
   .setProject(`${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}`);
 
 export const account = new Account(client);
+export const database = new Databases(client);
