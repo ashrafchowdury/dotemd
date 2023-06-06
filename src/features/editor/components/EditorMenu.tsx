@@ -22,7 +22,8 @@ import { downloadFile } from "../functions/downloadFile";
 import { saveTemplates } from "../functions/saveTemplates";
 
 const EditorMenu = () => {
-  const { isTemplate, setIsTemplate, editor, minText } = useEditor();
+  const { isTemplate, setIsTemplate, setIsKeyShortcut, editor, minText } =
+    useEditor();
   const { currentUser } = useAuth();
   const {
     publicTemplates,
@@ -57,7 +58,12 @@ const EditorMenu = () => {
         <Button style="!p-2" onclick={() => handleGetTemplates()}>
           <SlideIcon />
         </Button>
-        <Button style="!p-2">
+        <Button
+          style="!p-2"
+          onclick={() => {
+            setIsKeyShortcut?.(true);
+          }}
+        >
           <KeyboardIcon />
         </Button>
 
