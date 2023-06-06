@@ -7,6 +7,7 @@ import { useEditor } from "./context/useEditor";
 import InlineSelector from "./components/InlineSelector";
 import TableSelector from "./components/TableSelector";
 import { useLocalData } from "./hooks/useLocalData";
+import ShortCuts from "./components/ShortCuts";
 
 const TextEditor = () => {
   const { editorRef, editor } = useEditor();
@@ -21,6 +22,7 @@ const TextEditor = () => {
       <EditorMenu />
       <InlineSelector />
       <TableSelector />
+      <ShortCuts />
 
       {/***  TipTap RichText Editor ***/}
       <EditorContent

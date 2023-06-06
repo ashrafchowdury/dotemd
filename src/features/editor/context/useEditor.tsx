@@ -6,6 +6,8 @@ import { extensions } from "../extensions/extensions";
 type EditorContextType = {
   isTemplate?: boolean;
   setIsTemplate?: React.Dispatch<React.SetStateAction<boolean>>;
+  isKeyShortcut?: boolean;
+  setIsKeyShortcut?: React.Dispatch<React.SetStateAction<boolean>>;
   editor?: any;
   editorRef?: Ref<PureEditorContent>;
   minText?: boolean | null;
@@ -18,6 +20,7 @@ export const useEditor = (): EditorContextType => useContext(EditorContext);
 const EditorDataProvider = ({ children }: { children: React.ReactNode }) => {
   //states
   const [isTemplate, setIsTemplate] = useState(false); // this state toggles the template section.
+  const [isKeyShortcut, setIsKeyShortcut] = useState(false); // this state toggles the template section.
 
   //refs
   const editorRef = useRef(null);
@@ -32,6 +35,8 @@ const EditorDataProvider = ({ children }: { children: React.ReactNode }) => {
   const value: EditorContextType = {
     isTemplate,
     setIsTemplate,
+    isKeyShortcut,
+    setIsKeyShortcut,
     editor,
     editorRef,
     minText,
