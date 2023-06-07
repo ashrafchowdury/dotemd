@@ -1,70 +1,198 @@
+import { SaveIcon, DownloadIcon } from "../ui/Icons";
+import Button from "../ui/Button";
+
 ## Overview
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi dicta
-reprehenderit amet, ratione, debitis saepe ipsam earum sed
-obcaecati animi?
+dotemd is an efficient and feature-rich application that simplifies the creation of markdown files. It empowers users with a user-friendly interface, multiple formatting options, essential features, and a commitment to openness and collaboration.
 
 ---
 
-## Formats
+## Editor
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi
-dicta.
+dotemd's editor allows you to effortlessly design stunning markdown files with over 17 text formats, keyboard shortcuts, and text-to-markdown conversion capabilities.
 
-### Editor
+### Formats
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus, eum earum. Perferendis dolore
+You have access to 17 different text formats, including headings, lists, quotes, code blocks, images, tables, and more., here is the list of all formats:
 
-### Stle
+<table>
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Use Case</th>
+      <th>Keyboard Shortcut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Heading 1</td>
+      <td>Main section or title</td>
+      <td>Ctrl + Alt + 1</td>
+    </tr>
+    <tr>
+      <td>Heading 2</td>
+      <td>Subsection or subheading</td>
+      <td>Ctrl + Alt + 2</td>
+    </tr>
+    <tr>
+      <td>Heading 3</td>
+      <td>Subsection within a subsection</td>
+      <td>Ctrl + Alt + 3</td>
+    </tr>
+    <tr>
+      <td>Bullet List</td>
+      <td>Unordered list items</td>
+      <td>Ctrl + Shift + 8</td>
+    </tr>
+    <tr>
+      <td>Number List</td>
+      <td>Ordered list items</td>
+      <td>Ctrl + Shift + 7</td>
+    </tr>
+    <tr>
+      <td>Check List</td>
+      <td>Task list items with checkboxes</td>
+      <td>Ctrl + Shift + 9</td>
+    </tr>
+    <tr>
+      <td>Block Quote</td>
+      <td>Quoted text or excerpts</td>
+      <td>Ctrl + Shift + B</td>
+    </tr>
+    <tr>
+      <td>Code Block</td>
+      <td>Displaying code snippets</td>
+      <td>Ctrl + Alt + C</td>
+    </tr>
+    <tr>
+      <td>Image</td>
+      <td>Inserting images</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Table</td>
+      <td>Creating tabular data</td>
+      <td>Ctrl + Alt + T</td>
+    </tr>
+    <tr>
+      <td>Horizontal Rule</td>
+      <td>Separating sections or content</td>
+      <td>Ctrl + Alt + H</td>
+    </tr>
+    <tr>
+      <td>Bold</td>
+      <td>Emphasizing important text</td>
+      <td>Ctrl + B</td>
+    </tr>
+    <tr>
+      <td>Italic</td>
+      <td>Indicating emphasis or citations</td>
+      <td>Ctrl + I</td>
+    </tr>
+    <tr>
+      <td>Code</td>
+      <td>Highlighting inline code</td>
+      <td>Ctrl + E</td>
+    </tr>
+    <tr>
+      <td>Left align</td>
+      <td>Aligning text to the left</td>
+      <td>Ctrl + Shift + L</td>
+    </tr>
+    <tr>
+      <td>Center align</td>
+      <td>Aligning text to the center</td>
+      <td>Ctrl + Shift + E</td>
+    </tr>
+    <tr>
+      <td>Right align</td>
+      <td>Aligning text to the right</td>
+      <td>Ctrl + Shift + R</td>
+    </tr>
+    <tr>
+      <td>Undo</td>
+      <td>Reverting the most recent action</td>
+      <td>Ctrl + Z</td>
+    </tr>
+    <tr>
+      <td>Redo</td>
+      <td>Reapplying the most recently undone action</td>
+      <td>Ctrl + Y</td>
+    </tr>
+  </tbody>
+</table>
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus, eum earum. Perferendis dolore
+### Selectors
 
-### Coding
+We have notion like selectors component for selecting different types of formats. We have two different selector currently:
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus, eum earum.
+1. Main selector which open's when we click '/' button on keyboard.
+2. Text selector open's when we select text.
+
+### Editor Menu
+
+<img src="./assets/editorMenu.png" alt="dotemd-menu image" />
 
 ---
 
-## Example
+## Template Examples
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi
-dicta.
+Explore the power of dotemd with our templates provide a live example to kickstart your markdown file creation process.
 
-- data
-- structure
-- algorithem
+- [Dotemd Readme.md](https://github.com/ashrafchowdury/dotemd#readme)
+- [Issue-maker Readme.md](https://github.com/ashrafchowdury/issue-maker#readme)
 
 ---
 
-## Data
+## Contribution
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi
-dicta.
+We welcome contributions to dotemd! This document outlines is the guidelines for installation of this project. Please see [CONTRIBUTING.md](https://github.com/ashrafchowdury/dotemd/blob/main/CONTRIBUTING.md) for details.
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi
-dicta.
+### Installation
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi
-dicta.
+1. Clone the Repo
+
+```
+git clone https://github.com/ashrafchowdury/dotemd.git
+```
+
+2. Move to the project
+
+```
+cd dotemd
+```
+
+3. Install dependencies
+
+```
+npm install
+```
+
+4. Setup .env file
+
+```
+NEXT_APPWRITE_DATABASE_ID=
+NEXT_APPWRITE_COLLECTION_ID=
+
+//optional
+NEXT_PUBLIC_APPWRITE_PUBLIC_DATABASE_ID=
+NEXT_PUBLIC_APPWRITE_PUBLIC_COLLECTION_ID=
+```
+
+5. Run the application
+
+```
+npm run dev
+```
+
+6. After changes Run
+
+```
+npm run format
+```
 
 ---
 
-## Structure
+## Conclusion
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi
-dicta.
-
----
-
-## Algorithem
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus,
-eum earum. Perferendis dolore odio ex! Libero rem porro modi
-dicta.
+In conclusion, dotemd is a powerful tool for creating markdown files with ease. Its user-friendly interface, combined with a wide range of formatting options, allows you to design visually appealing markdown documents in seconds. Whether you're working on a project documentation, writing blog posts, dotemd has got you covered everything related to markdown.

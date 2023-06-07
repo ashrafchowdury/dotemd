@@ -46,19 +46,54 @@
 /*** Documentation styling section ***/
 @layer base {
   .doc p {
-    @apply my-5 lg:text-[16px] lg:leading-8 md:text-sm md:leading-9 text-xs leading-6;
+    @apply my-5 w-full;
   }
-  .doc li {
+  .doc p,
+  li,
+  code {
+    @apply lg:text-[16px] lg:leading-8 md:text-sm md:leading-9 text-xs leading-6;
+  }
+  .doc ul li {
     @apply list-disc my-3 mx-6;
+  }
+  .doc ol li {
+    @apply list-decimal my-3 mx-6;
+  }
+  .doc a {
+    @apply hover:underline text-primary inline;
   }
   .doc h2 {
     @apply lg:text-4xl md:text-3xl text-2xl font-bold mb-6 flex items-center cursor-pointer translate-x-[-45px];
   }
   .doc h3 {
-    @apply lg:text-2xl md:text-xl text-lg font-bold mt-8 flex items-center cursor-pointer translate-x-[-42px];
+    @apply lg:text-2xl md:text-xl text-lg font-bold mt-10 flex items-center cursor-pointer translate-x-[-42px];
   }
   .doc .docLine {
     @apply md:my-12 my-8 w-full h-[1px] bg-glass text-glass;
+  }
+  .doc pre {
+    @apply my-5 w-full bg-glass py-4 px-6 rounded-lg overflow-auto;
+  }
+  .doc pre code {
+    @apply w-full;
+  }
+  .doc table {
+    @apply md:w-full w-full overflow-auto rounded-lg;
+  }
+  .doc table tbody {
+    @apply w-full overflow-auto rounded-lg;
+  }
+  .doc table tr th {
+    @apply md:text-[16px] text-xs md:py-4 py-2 px-3 text-start border border-glass bg-glass;
+  }
+  .doc table tr td {
+    @apply md:text-[16px] text-xs py-3 px-3 border border-glass;
+  }
+  .doc table tr td:last-child {
+    @apply md:!text-[16px] !text-[10px];
+  }
+  .doc img {
+    @apply w-full my-5;
   }
 }
 

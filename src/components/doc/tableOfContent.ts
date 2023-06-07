@@ -4,14 +4,12 @@ type TableOfContentType = {
 };
 
 export const tableOfContent: TableOfContentType[] = [
+  { parent: "overview" },
   {
-    parent: "overview",
+    parent: "editor",
+    childrens: ["formats", "selectors", "editor menu"],
   },
-  {
-    parent: "formats",
-    childrens: ["editor", "style", "coding"],
-  },
-  {
-    parent: "example",
-  },
+  { parent: "template examples" },
+  { parent: "contribution", childrens: ["installation"] },
+  { parent: "conclusion" },
 ];
