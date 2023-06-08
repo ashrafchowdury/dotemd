@@ -1,42 +1,11 @@
 import Image from "next/image";
 import Heading from "../ui/Heading";
-
-type FeaturesType = {
-  image: string;
-  label: string;
-  title: string;
-  about: string;
-  style?: string;
-};
+import { slideFeatures } from "@/utils/features";
 
 const Feature = () => {
-  const features: FeaturesType[] = [
-    {
-      image: "./assets/editor.svg",
-      label: "Markdown",
-      title: "We provide polish markdown to us an output",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vero nam dolore, nesciunt facilis repellendus consequatur dolor debitis iusto. Commodi? Sequi vero nam dolore, nesciunt facilis repellendus consequatur dolor debitis iusto.",
-    },
-    {
-      image: "./assets/workflow.svg",
-      label: "How we work",
-      title: "Everything is well planned & well designed",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vero nam dolore, nesciunt facilis repellendus consequatur dolor debitis iusto. Commodi? Sequi vero nam dolore, nesciunt facilis repellendus consequatur dolor debitis iusto.",
-      style: "lg:flex-row-reverse",
-    },
-    {
-      image: "./assets/code.svg",
-      label: "Code",
-      title: "We provide polish markdown to us an output",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vero nam dolore, nesciunt facilis repellendus consequatur dolor debitis iusto. Commodi? Sequi vero nam dolore, nesciunt facilis repellendus consequatur dolor debitis iusto.",
-    },
-  ];
   return (
     <>
-      {features.map((data) => {
+      {slideFeatures.map((data) => {
         return (
           <div
             className={`${data?.style} flex lg:flex-row flex-col lg:items-center items-start justify-between lg:my-20 my-16`}

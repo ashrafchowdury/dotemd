@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 import { useAuth } from "@/context/AuthContext";
 import { useSearchParams } from "next/navigation";
 
-const Page = () => {
+const Recover = () => {
   const { recoverAccount, isLoading } = useAuth();
   const searchParams = useSearchParams();
   const userId: any = searchParams.get("userId");
@@ -15,7 +15,7 @@ const Page = () => {
     const password: string = event.target[0].value;
     const cPassword: string = event.target[1].value;
 
-    recoverAccount?.(userId, secret, password, cPassword);
+    recoverAccount(userId, secret, password, cPassword);
   };
 
   if (!userId && !secret) {
@@ -71,7 +71,7 @@ const Page = () => {
 
           <Button
             style="w-full bg-primary flex justify-center font-semibold rounded-lg px-4 py-3 mt-9"
-            disble={isLoading}
+            disable={isLoading}
           >
             Submit
           </Button>
@@ -81,4 +81,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Recover;

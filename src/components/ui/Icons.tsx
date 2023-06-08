@@ -28,6 +28,7 @@ import {
   BsCardImage,
   BsPlayBtnFill,
   BsCheck2Square,
+  BsChevronDown,
 } from "react-icons/bs";
 import { CiAlignRight, CiAlignCenterV, CiAlignLeft } from "react-icons/ci";
 import { BiUndo, BiRedo } from "react-icons/bi";
@@ -50,6 +51,10 @@ export const LinkedinIcon = ({ style }: IconcType) => {
 
 export const KeyboardIcon = ({ style }: IconcType) => {
   return <FaRegKeyboard className={`${style}`} />;
+};
+
+export const ArrowDownIcon = ({ style }: IconcType) => {
+  return <BsChevronDown className={`${style}`} />;
 };
 
 export const SaveIcon = ({ style }: IconcType) => {

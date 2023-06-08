@@ -12,7 +12,7 @@ import {
   UndoIcon,
   RedoIcon,
 } from "@/components/ui/Icons";
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 import { useTemplates } from "../context/TemplateContext";
 import { useAuth } from "@/context/AuthContext";
 // functions
@@ -36,7 +36,7 @@ const EditorMenu = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleGetTemplates = () => {
-    isTemplate ? setIsTemplate?.(false) : setIsTemplate?.(true);
+    isTemplate ? setIsTemplate(false) : setIsTemplate(true);
 
     if (publicTemplates?.length == 0) {
       getPublicTemplates();
@@ -55,25 +55,36 @@ const EditorMenu = () => {
       </p>
 
       <div className="editorMenu !text-sm flex items-center md:space-x-3 space-x-2">
-        <Button style="!p-2" onclick={() => handleGetTemplates()}>
+        <Button
+          style="!p-2"
+          onclick={() => handleGetTemplates()}
+          title="Open Template"
+        >
           <SlideIcon />
         </Button>
         <Button
           style="!p-2"
-          onclick={() => {
-            setIsKeyShortcut?.(true);
-          }}
+          onclick={() => setIsKeyShortcut(true)}
+          title="Keyboard Shortcuts"
         >
           <KeyboardIcon />
         </Button>
 
         <div className=" w-[1px] h-6 bg-glass"></div>
 
-        <Button style="!p-2" onclick={() => editor.commands.undo()}>
+        <Button
+          style="!p-2"
+          onclick={() => editor.commands.undo()}
+          title="Undo"
+        >
           <UndoIcon />
         </Button>
 
-        <Button style="!p-2" onclick={() => editor.commands.redo()}>
+        <Button
+          style="!p-2"
+          onclick={() => editor.commands.redo()}
+          title="Redo"
+        >
           <RedoIcon />
         </Button>
 
@@ -83,19 +94,32 @@ const EditorMenu = () => {
           onclick={() =>
             saveTemplates(inputRef, saveUserTemplates, currentUser, minText)
           }
+          title="Save File"
         >
           <SaveIcon />
         </Button>
 
-        <Button style="!p-2" onclick={() => downloadFile(inputRef, editor)}>
+        <Button
+          style="!p-2"
+          onclick={() => downloadFile(inputRef, editor, minText)}
+          title="Download File"
+        >
           <DownloadIcon />
         </Button>
 
-        <Button style="!p-2" onclick={() => copyCode(editor)}>
+        <Button
+          style="!p-2"
+          onclick={() => minText && copyCode(editor)}
+          title="Copy Code"
+        >
           <CopyIcon />
         </Button>
 
-        <Button style="!p-2" onclick={() => clearCode(editor)}>
+        <Button
+          style="!p-2"
+          onclick={() => minText && clearCode(editor)}
+          title="Clearn Editor"
+        >
           <CroseIcon />
         </Button>
       </div>

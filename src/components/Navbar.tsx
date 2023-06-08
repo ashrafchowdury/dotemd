@@ -5,7 +5,6 @@ import Button from "./ui/Button";
 import { usePathname } from "next/navigation";
 import { GithubIcon } from "./ui/Icons";
 import DropdownMenu from "./DropdownMenu";
-import Badge from "./ui/Badge";
 import { githubLink } from "@/utils/socialLinks";
 import { useAuth } from "@/context/AuthContext";
 
@@ -21,10 +20,7 @@ const Navbar = () => {
           <div className="pageLinks lg:flex hidden items-center ml-8">
             <Link href="/">Home</Link>
             <Link href="/editor">Editor</Link>
-            <Link href="/templates">Templates</Link>
-            <Link href="/doc">
-              Doc <Badge title="New" variant="green" />
-            </Link>
+            <Link href="/doc">Documentation</Link>
             <Link href="/about">About</Link>
           </div>
         )}

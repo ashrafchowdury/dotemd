@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 import { BubbleMenu } from "@tiptap/react";
 import {
   AlignLeftIcon,
@@ -20,8 +20,9 @@ const InlineSelector = () => {
   const [isLink, setisLink] = useState<"link" | "media" | "">("");
   const { editor } = useEditor();
 
+  // checking whether the format is active ot not
   const isActive = (name: string | { textAlign: string }) =>
-    editor?.isActive(name) ? "text-red-500" : "";
+    editor?.isActive(name) ? "text-primary" : "";
   const toggleSelector = () => editor.chain().focus();
 
   return (

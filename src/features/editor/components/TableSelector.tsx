@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 import { BubbleMenu } from "@tiptap/react";
 import { SlideIcon, TableIcon, CroseIcon } from "@/components/ui/Icons";
 

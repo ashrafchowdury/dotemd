@@ -1,7 +1,7 @@
 import { CroseIcon } from "@/components/ui/Icons";
 import { keyShortCutList } from "../utils/keyShortCutList";
 import Button from "@/components/ui/Button";
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 
 const ShortCuts = () => {
   const { isKeyShortcut, setIsKeyShortcut } = useEditor();
@@ -18,7 +18,7 @@ const ShortCuts = () => {
           </p>
           <Button
             style=" !p-2 hover:bg-glass duration-300"
-            onclick={() => setIsKeyShortcut?.(false)}
+            onclick={() => setIsKeyShortcut(false)}
           >
             <CroseIcon style=" md:text-sm text-xs" />
           </Button>

@@ -3,26 +3,22 @@
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
-const Page = () => {
+const Forget = () => {
   const { forget, isLoading, currentUser } = useAuth();
+  const router = useRouter();
 
   const handleUserForgetEmail = async (event: any) => {
     event.preventDefault();
     const email = event.target[0].value;
-    forget?.(email);
+    forget(email);
   };
 
   if (currentUser) {
-    return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <h1 className=" lg:text-4xl md:text-3xl text-2xl font-bold text-center">
-          Why are you here 😠
-        </h1>
-      </div>
-    );
+    router.push("/editor");
+    return null;
   }
-
   return (
     <section className="flex flex-col lg:flex-row justify-center items-start lg:space-x-9">
       <div className=" w-full lg:w-[300px] mb-10 lg:mb-0">
@@ -56,7 +52,7 @@ const Page = () => {
 
         <Button
           style="w-full bg-primary flex justify-center font-semibold rounded-lg px-4 py-3 mt-9"
-          disble={isLoading}
+          disable={isLoading}
         >
           Submit
         </Button>
@@ -65,4 +61,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Forget;

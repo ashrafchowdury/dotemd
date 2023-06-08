@@ -3,7 +3,6 @@ import Logo from "./ui/Logo";
 import Link from "next/link";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "./ui/Icons";
 import HorizontalLine from "./ui/HorizontalLine";
-import Badge from "./ui/Badge";
 import { usePathname } from "next/navigation";
 import {
   developerLink,
@@ -59,11 +58,8 @@ const Footer = () => {
             </p>
             <div className="md:text-[16px] text-sm flex flex-col md:items-start items-center space-y-5 mt-4 ">
               <Link href="/editor">Create .md file</Link>
-              <Link href="/templates">Templates</Link>
               <Link href="/editor">Open Editor</Link>
-              <Link href="/doc">
-                Doc <Badge title="New" variant="green" />
-              </Link>
+              <Link href="/doc">Documentation</Link>
             </div>
           </div>
         </div>

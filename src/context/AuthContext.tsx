@@ -12,17 +12,14 @@ type UserDataType = {
 };
 
 type AuthContextType = {
-  currentUser?: UserDataType | null;
-  setCurrentUser?: React.Dispatch<React.SetStateAction<UserDataType | null>>;
-  isLoading?: boolean;
-  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
-  isAuth?: boolean;
-  setIsAuth?: React.Dispatch<React.SetStateAction<boolean>>;
-  register?: (email: string, password: string) => void;
-  forget?: (email: string) => void;
-  githubAuth?: () => void;
-  logout?: () => void;
-  recoverAccount?: (
+  currentUser: UserDataType | null;
+  setCurrentUser: React.Dispatch<React.SetStateAction<UserDataType | null>>;
+  isLoading: boolean;
+  register: (email: string, password: string) => void;
+  forget: (email: string) => void;
+  githubAuth: () => void;
+  logout: () => void;
+  recoverAccount: (
     userId: string,
     secret: string,
     password: string,
@@ -42,7 +39,6 @@ const AuthContextProvider: React.FC<ChildrenType> = ({
 }: ChildrenType) => {
   const [currentUser, setCurrentUser] = useState<UserDataType | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isAuth, setIsAuth] = useState(true);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -61,11 +57,11 @@ const AuthContextProvider: React.FC<ChildrenType> = ({
       if (userAuth?.email) {
         setCurrentUser(userAuth);
       } else {
-        setIsAuth(false);
+        setCurrentUser(null);
       }
     };
     getCurrentUser();
-  }, [pathname]);
+  }, []);
 
   const register = async (email: string, password: string) => {
     setIsLoading(true);
@@ -98,7 +94,6 @@ const AuthContextProvider: React.FC<ChildrenType> = ({
       }
     }
     setIsLoading(false);
-    setIsAuth(false);
   };
 
   const forget = async (email: string) => {
@@ -156,7 +151,6 @@ const AuthContextProvider: React.FC<ChildrenType> = ({
     try {
       await account.deleteSession("current");
       setCurrentUser?.(null);
-      setIsAuth(false);
       toast.success("Logout successfully 🤝");
       router.push("/");
     } catch (error) {
@@ -171,7 +165,6 @@ const AuthContextProvider: React.FC<ChildrenType> = ({
     logout,
     githubAuth,
     isLoading,
-    isAuth,
     forget,
     recoverAccount,
   };

@@ -39,12 +39,6 @@ const DropdownMenu = () => {
                 Editor
               </Link>
               <Link
-                href="/templates"
-                className=" px-3 py-2 my-1 text-sm text-start font-medium rounded-md duration-300"
-              >
-                Templates
-              </Link>
-              <Link
                 href="/doc"
                 className=" px-3 py-2 my-1 text-sm text-start font-medium rounded-md duration-300"
               >
@@ -53,7 +47,7 @@ const DropdownMenu = () => {
               {currentUser ? (
                 <button
                   className=" px-3 py-2 my-1 text-sm text-start font-medium rounded-md duration-300"
-                  onClick={() => logout?.()}
+                  onClick={() => logout()}
                 >
                   Log Out
                 </button>
