@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import HorizontalLine from "../ui/HorizontalLine";
-import { tableOfContent } from "./tableOfContent";
+import { tableOfContent } from "../../utils/tableOfContent";
 
 const Navigation = () => {
   return (

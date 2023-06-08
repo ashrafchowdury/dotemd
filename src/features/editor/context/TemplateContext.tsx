@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { database } from "@/config/appwriteConfig";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../../../context/AuthContext";
-import { useEditor } from "./useEditor";
+import { useEditor } from "./EditorContext";
 
 type TemplatesType = {
   $id: string;
@@ -14,12 +14,9 @@ type TemplatesType = {
 }[];
 
 type TemplateContextType = {
-  publicTemplates?: TemplatesType;
-  setPublicTemplates?: React.Dispatch<React.SetStateAction<TemplatesType>>;
-  userTemplates?: TemplatesType;
-  setUserTemplates?: React.Dispatch<React.SetStateAction<TemplatesType>>;
-  isLoading?: boolean;
-  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
+  publicTemplates: TemplatesType;
+  userTemplates: TemplatesType;
+  isLoading: boolean;
   getUserTemplates: () => void;
   saveUserTemplates: (title: string) => void;
   getPublicTemplates: () => void;
@@ -117,11 +114,8 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
 
   const value: TemplateContextType = {
     publicTemplates,
-    setPublicTemplates,
     userTemplates,
-    setUserTemplates,
     isLoading,
-    setIsLoading,
     getPublicTemplates,
     saveUserTemplates,
     getUserTemplates,

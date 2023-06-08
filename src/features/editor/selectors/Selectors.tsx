@@ -1,6 +1,6 @@
 import { forwardRef, ForwardedRef, useRef } from "react";
 import { SelectorPropsType } from "../types/selectorsTypes";
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 import { toggleSelectors } from "../functions/toggleSelectors";
 
 const Selectors = forwardRef(

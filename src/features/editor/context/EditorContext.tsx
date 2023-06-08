@@ -1,21 +1,20 @@
 import { useState, createContext, useContext, useRef, Ref } from "react";
 import { useEditor as useTiptap, PureEditorContent } from "@tiptap/react";
-
 import { extensions } from "../extensions/extensions";
 
 type EditorContextType = {
-  isTemplate?: boolean;
-  setIsTemplate?: React.Dispatch<React.SetStateAction<boolean>>;
-  isKeyShortcut?: boolean;
-  setIsKeyShortcut?: React.Dispatch<React.SetStateAction<boolean>>;
-  editor?: any;
-  editorRef?: Ref<PureEditorContent>;
-  minText?: boolean | null;
+  isTemplate: boolean;
+  setIsTemplate: React.Dispatch<React.SetStateAction<boolean>>;
+  isKeyShortcut: boolean;
+  setIsKeyShortcut: React.Dispatch<React.SetStateAction<boolean>>;
+  editor: any;
+  editorRef: Ref<PureEditorContent>;
+  minText: boolean | null;
 };
 
-export const EditorContext = createContext<EditorContextType>({});
+export const EditorContext = createContext<EditorContextType | null>(null);
 
-export const useEditor = (): EditorContextType => useContext(EditorContext);
+export const useEditor = () => useContext(EditorContext)!;
 
 const EditorDataProvider = ({ children }: { children: React.ReactNode }) => {
   //states
@@ -25,12 +24,12 @@ const EditorDataProvider = ({ children }: { children: React.ReactNode }) => {
   //refs
   const editorRef = useRef(null);
 
-  // hoooks
+  // hooks
   const editor = useTiptap({
     extensions: extensions,
   });
 
-  const minText: boolean | null = editor && editor?.getHTML().length >= 16;
+  const minText: boolean | null = editor && editor?.getText().length >= 10;
 
   const value: EditorContextType = {
     isTemplate,

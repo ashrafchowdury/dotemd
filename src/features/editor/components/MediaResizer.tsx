@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CroseIcon } from "@/components/ui/Icons";
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 
 type MediaResizerType = {
   setisLink: React.Dispatch<React.SetStateAction<"link" | "media" | "">>;
@@ -36,6 +36,7 @@ const MediaResizer = ({ setisLink }: MediaResizerType) => {
 
   const handleUpdateMedia = () => {
     editor.commands.setImage({ src: link, width: width, height: height });
+    setisLink("");
   };
 
   return (

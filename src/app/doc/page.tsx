@@ -7,7 +7,7 @@ import { GithubIcon } from "@/components/ui/Icons";
 import Label from "@/components/ui/Label";
 import { githubLink } from "@/utils/socialLinks";
 
-const page = () => {
+const Doc = () => {
   return (
     <>
       <header className=" flex items-center justify-between lg:mt-24 md:mt-20 mt-16">
@@ -33,7 +33,8 @@ const page = () => {
             src="./assets/editor.svg"
             width={500}
             height={500}
-            alt="image"
+            alt="dotemd image"
+            loading="lazy"
           />
         </div>
       </header>
@@ -51,4 +52,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Doc;

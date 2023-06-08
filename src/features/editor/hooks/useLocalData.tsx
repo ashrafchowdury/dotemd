@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 import toaster from "@/components/ui/toaster";
 
 export const useLocalData = () => {

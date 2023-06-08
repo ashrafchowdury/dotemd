@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 import { useAuth } from "@/context/AuthContext";
 import { useTemplates } from "../context/TemplateContext";
 import { TrashIcon, FileIcon } from "@/components/ui/Icons";
@@ -16,7 +16,7 @@ const Templates = () => {
   const handleInsertData = (template: string) => {
     editor?.commands.clearContent();
     editor?.commands.insertContent(template);
-    setIsTemplate?.(false);
+    setIsTemplate(false);
   };
 
   if (!isTemplate) {

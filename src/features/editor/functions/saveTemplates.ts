@@ -8,9 +8,9 @@ export const saveTemplates = (
   minText: boolean | null | undefined
 ) => {
   if (!currentUser) {
-    toast.error("Log In to your account to save templates");
+    toast.error("Log In to your account to save file");
   } else if (!minText) {
-    toast.error("Write some text to save template");
+    toast.error("Write some text to save the file");
   } else {
     toaster({
       title: "Save Template",

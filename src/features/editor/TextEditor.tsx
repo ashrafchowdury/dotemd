@@ -3,11 +3,12 @@
 import { useEffect } from "react";
 import EditorMenu from "./components/EditorMenu";
 import { EditorContent } from "@tiptap/react";
-import { useEditor } from "./context/useEditor";
+import { useEditor } from "./context/EditorContext";
 import InlineSelector from "./components/InlineSelector";
 import TableSelector from "./components/TableSelector";
 import { useLocalData } from "./hooks/useLocalData";
 import ShortCuts from "./components/ShortCuts";
+import EditorSkeleton from "./components/skeleton/EditorSkeleton";
 
 const TextEditor = () => {
   const { editorRef, editor } = useEditor();
@@ -31,6 +32,7 @@ const TextEditor = () => {
         className="editor"
         onKeyDown={updateLocalData}
       />
+      {!editor && <EditorSkeleton />}
     </section>
   );
 };

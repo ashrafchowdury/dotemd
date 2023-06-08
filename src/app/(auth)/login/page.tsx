@@ -4,28 +4,24 @@ import Button from "@/components/ui/Button";
 import HorizontalLine from "@/components/ui/HorizontalLine";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
-const Page = () => {
+const Login = () => {
   const { register, isLoading, githubAuth, currentUser } = useAuth();
+  const router = useRouter();
 
   const handleUserAuthData = async (event: any) => {
     event.preventDefault();
     const email: string = event.target[0].value;
     const password: string = event.target[1].value;
 
-    register?.(email, password);
+    register(email, password);
   };
 
   if (currentUser) {
-    return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <h1 className=" lg:text-4xl md:text-3xl text-2xl font-bold text-center">
-          Why are you here 😠
-        </h1>
-      </div>
-    );
+    router.push("/editor");
+    return null;
   }
-
   return (
     <section className="flex flex-col lg:flex-row justify-center items-start lg:space-x-9">
       <div className=" w-full lg:w-[300px] mb-10 lg:mb-0">
@@ -44,8 +40,8 @@ const Page = () => {
 
         <Button
           style="w-full py-3 flex items-center justify-center"
-          disble={isLoading}
-          onclick={() => githubAuth?.()}
+          disable={isLoading}
+          onclick={() => githubAuth()}
         >
           {" "}
           <GithubIcon style="text-2xl mr-2" /> Log in with Github
@@ -84,7 +80,7 @@ const Page = () => {
 
           <Button
             style="w-full bg-primary flex justify-center font-semibold rounded-lg px-4 py-3 mt-9"
-            disble={isLoading}
+            disable={isLoading}
           >
             Log in
           </Button>
@@ -94,4 +90,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Login;

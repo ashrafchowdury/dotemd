@@ -1,29 +1,7 @@
 import Image from "next/image";
-
-type ExampleType = {
-  img: string;
-  title: string;
-  about: string;
-  link?: string;
-};
+import { example } from "@/utils/example";
 
 const Example = () => {
-  const example: ExampleType[] = [
-    {
-      img: "./assets/example.svg",
-      title: "Readme.md file",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum exercitationem cum, doloribus quae tempora aliquid?",
-      link: "",
-    },
-    {
-      img: "./assets/example.svg",
-      title: "Contrubuting.md file",
-      about:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum exercitationem cum, doloribus quae tempora aliquid?",
-      link: "",
-    },
-  ];
   return (
     <>
       {example.map((data) => {

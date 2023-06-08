@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CroseIcon } from "@/components/ui/Icons";
-import { useEditor } from "../context/useEditor";
+import { useEditor } from "../context/EditorContext";
 
 type HyperlinkType = {
   setisLink: React.Dispatch<React.SetStateAction<"link" | "media" | "">>;

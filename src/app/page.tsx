@@ -10,7 +10,7 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { githubLink } from "@/utils/socialLinks";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <header className=" relative lg:w-[950px] w-full h-[80vh] flex flex-col items-center justify-center mx-auto text-center sm:mb-0 sm:mt-0 mt-10 mb-16 lg:overflow-visible overflow-hidden">
@@ -114,4 +114,6 @@ export default function Home() {
       <HorizontalLine style="mb-20 mt-6" />
     </>
   );
-}
+};
+
+export default Home;

@@ -10,6 +10,7 @@ const Logo = () => {
           width={40}
           height={24}
           alt="dotemd logo"
+          loading="lazy"
         />
       </div>
       <h1 className=" ml-2 lg:text-3xl text-2xl font-bold">dotemd</h1>

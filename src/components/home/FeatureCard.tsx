@@ -1,36 +1,9 @@
-import { ReactNode } from "react";
-import { SaveIcon, KeyboardIcon, DownloadIcon } from "../ui/Icons";
-
-type FeatureCardType = {
-  icon: ReactNode;
-  title: string;
-  about: string;
-};
+import { cardFeatures } from "@/utils/features";
 
 const FeatureCard = () => {
-  const features: FeatureCardType[] = [
-    {
-      icon: <KeyboardIcon />,
-      title: "Key Shortcuts",
-      about:
-        "Our editor has keyboard shortcuts for every selector, making it easy to edit and manipulate your templates.",
-    },
-    {
-      icon: <SaveIcon />,
-      title: "Auto Save",
-      about:
-        "Our editor has keyboard shortcuts for every selector, making it easy to edit and manipulate your templates.",
-    },
-    {
-      icon: <DownloadIcon />,
-      title: "Download File",
-      about:
-        "Our editor has keyboard shortcuts for every selector, making it easy to edit and manipulate your templates.",
-    },
-  ];
   return (
     <>
-      {features.map((data) => {
+      {cardFeatures.map((data) => {
         return (
           <div
             className=" xl:w-[380px] xl:h-[280px] md:w-[320px] md:h-[250px] w-full  bg-glass xl:mx-3 lg:mt-0 m-2 rounded-lg xl:p-10 md:p-8 p-10"

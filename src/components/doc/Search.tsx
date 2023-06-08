@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { SearchIcon, HashIcon } from "../ui/Icons";
-import { tableOfContent } from "./tableOfContent";
+import { tableOfContent } from "../../utils/tableOfContent";
 import useDropdown from "@/hooks/useDropdown";
 
 const Search = () => {
@@ -9,7 +9,7 @@ const Search = () => {
   const [searchedData, setSearchedData] = useState(tableOfContent);
   const { dropdown, setDropdown } = useDropdown();
 
-  const handleSearchData = () => {
+  const handleSearchDoc = () => {
     const searchTerm = searchRef?.current?.value?.toLowerCase() || "";
     const filterListItems = tableOfContent.filter((data) => {
       return data.parent.toLowerCase().includes(searchTerm);
@@ -29,7 +29,7 @@ const Search = () => {
         placeholder="Search what you want"
         className="lg:w-[70%] md:w-[90%] w-full md:text-[16px] text-sm py-[10px] md:px-10 px-9 rounded-lg border-2 border-glassBorder bg-glass"
         ref={searchRef}
-        onChange={handleSearchData}
+        onChange={handleSearchDoc}
         onFocus={handleOpenSearchList}
       />
       {dropdown && (

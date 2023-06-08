@@ -67,7 +67,7 @@ const toaster = ({
       </div>
     </div>,
     {
-      duration: type == "alert" ? 999999 : 4000,
+      duration: type == "alert" ? 999999 : 2000,
     }
   );
 };

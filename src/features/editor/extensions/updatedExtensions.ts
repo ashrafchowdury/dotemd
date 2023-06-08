@@ -1,5 +1,4 @@
 import Table from "@tiptap/extension-table";
-import Youtube from "@tiptap/extension-youtube";
 import Image from "@tiptap/extension-image";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
 

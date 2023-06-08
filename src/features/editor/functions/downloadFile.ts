@@ -5,14 +5,15 @@ import { Editor } from "@tiptap/react";
 
 export const downloadFile = (
   inputRef: React.RefObject<HTMLInputElement>,
-  editor: Editor
+  editor: Editor,
+  minText: boolean | null
 ) => {
   const { markdownCode } = htmlToMarkdown(editor);
 
-  if (editor.getText().length > 10) {
+  if (minText) {
     toaster({
       title: "Download File",
-      about: "You can ad file name accorind to your choice",
+      about: "Add file name to download it",
       type: "alert",
       input: true,
       toastRef: inputRef,
@@ -33,7 +34,7 @@ export const downloadFile = (
               about: "Now you can use the file wherever you want",
             });
           } catch (error) {
-            toast.error("Something was wrong!");
+            toast.error("Something went wrong!");
           }
         },
       },
