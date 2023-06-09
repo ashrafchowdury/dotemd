@@ -1,27 +1,28 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const useDropdown = () => {
-  const [dropdown, setDropdown] = useState(false);
+  const [isDropdown, setIsDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleWindowClick = useCallback((event: MouseEvent) => {
+  const handleOutsideClick = (event: MouseEvent) => {
     if (
-      event.target &&
-      !(event.target as HTMLDivElement).closest(".relative")
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
     ) {
-      setDropdown(false);
+      setIsDropdown(false);
     }
-  }, []);
+  };
 
   useEffect(() => {
-    window.addEventListener("click", handleWindowClick);
+    window.addEventListener("click", handleOutsideClick);
 
     return () => {
-      window.removeEventListener("click", handleWindowClick);
+      window.removeEventListener("click", handleOutsideClick);
     };
-  }, [handleWindowClick]);
+  }, []);
 
-  return { dropdown, setDropdown };
+  return { isDropdown, setIsDropdown, dropdownRef };
 };
 
 export default useDropdown;

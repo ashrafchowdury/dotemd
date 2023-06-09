@@ -7,21 +7,24 @@ import useDropdown from "@/hooks/useDropdown";
 import { useAuth } from "@/context/AuthContext";
 
 const DropdownMenu = () => {
-  const { dropdown, setDropdown } = useDropdown();
+  const { isDropdown, setIsDropdown, dropdownRef } = useDropdown();
   const { currentUser, logout } = useAuth();
 
   return (
     <>
-      <div className={`relative ${currentUser ? "" : "lg:hidden"} block`}>
-        <Button
-          style="!p-2"
-          onclick={() => (dropdown ? setDropdown(false) : setDropdown(true))}
-        >
+      <div
+        ref={dropdownRef}
+        className={`relative ${currentUser ? "" : "lg:hidden"} block`}
+      >
+        <Button style="!p-2" onclick={() => setIsDropdown(!isDropdown)}>
           <DoteMenuIcon />
         </Button>
-        {dropdown && (
+        {isDropdown && (
           <div className="absolute z-10 w-[250px] right-1 origin-top-right mt-2 rounded-lg bg-dark border border-glass">
-            <div className="px-1 py-1 shadow-md rounded-lg flex flex-col ">
+            <div
+              className="px-1 py-1 shadow-md rounded-lg flex flex-col"
+              onClick={() => setIsDropdown(false)}
+            >
               <p className=" text-sm px-3 mt-2 overflow-hidden whitespace-nowrap">
                 {currentUser ? currentUser?.email : "About"}
               </p>
