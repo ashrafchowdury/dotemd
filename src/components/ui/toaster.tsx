@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { CroseIcon } from "@/components/ui/Icons";
 import Button from "@/components/ui/Button";
@@ -14,20 +15,35 @@ type ToastType = {
   toastRef?: any;
 };
 
-const toaster = ({
+const CustomToast = ({
   title,
   about,
-  type = "status",
   btnOne,
   btnTwo,
   input,
   toastRef,
+  type,
 }: ToastType) => {
-  toast.custom(
+  useEffect(() => {
+    // if type == "alert" then then this function disable the window click
+    const disableWindowClick = () => {
+      if (type == "alert") {
+        window.document.documentElement.style.pointerEvents = "none";
+      }
+    };
+    disableWindowClick();
+  }, []);
+
+  const enableWindow = () => {
+    window.document.documentElement.style.pointerEvents = "auto";
+    toast.remove();
+  };
+
+  return (
     <div className=" text-start sm:w-[400px] w-[95%] sm:p-6 p-5 rounded-lg border border-glass bg-[#0B0B22]">
       <p className="sm:text-[16px] text-sm font-semibold flex items-center justify-between">
         {title}
-        <button onClick={() => toast.remove()}>
+        <button onClick={() => enableWindow()}>
           <CroseIcon style="cursor-pointer" />
         </button>
       </p>
@@ -47,7 +63,7 @@ const toaster = ({
             style="sm:!text-xs !text-[10px] capitalize bg-transparent border border-glass !px-4 mr-3 mt-6"
             onclick={() => {
               btnOne?.onclcik();
-              toast.remove();
+              enableWindow();
             }}
           >
             {btnOne?.title}
@@ -58,14 +74,36 @@ const toaster = ({
             style="sm:!text-xs !text-[10px] capitalize !px-4 mt-6"
             onclick={() => {
               btnTwo?.onclcik();
-              toast.remove();
+              enableWindow();
             }}
           >
             {btnTwo?.title}
           </Button>
         )}
       </div>
-    </div>,
+    </div>
+  );
+};
+
+const toaster = ({
+  title,
+  about,
+  type = "status",
+  btnOne,
+  btnTwo,
+  input,
+  toastRef,
+}: ToastType) => {
+  toast.custom(
+    <CustomToast
+      title={title}
+      about={about}
+      btnOne={btnOne}
+      btnTwo={btnTwo}
+      input={input}
+      toastRef={toastRef}
+      type={type}
+    />,
     {
       duration: type == "alert" ? 999999 : 2000,
     }
