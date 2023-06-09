@@ -42,7 +42,7 @@ const MediaResizer = ({ setisLink }: MediaResizerType) => {
   return (
     <>
       <section
-        className={` w-[350px] rounded-lg bg-dark p-3 border border-glass`}
+        className={` md:w-[350px] w-[220px] rounded-lg bg-dark p-3 border border-glass`}
       >
         <div className=" w-full flex justify-between items-center md:mb-4 mb-3">
           <p className=" md:text-sm text-xs font-meduim">🔗 Update Media</p>{" "}
@@ -58,7 +58,7 @@ const MediaResizer = ({ setisLink }: MediaResizerType) => {
           <input
             type="link"
             placeholder="Update Image URL"
-            className="w-[180px] px-4 py-[10px] text-xs rounded-lg bg-glass outline-transparent"
+            className="md:w-[180px] w-[100px] md:px-4 px-2 py-[10px] text-xs rounded-lg bg-glass outline-transparent"
             value={link}
             onChange={(e) => setLink(e.target.value)}
           />
@@ -67,14 +67,14 @@ const MediaResizer = ({ setisLink }: MediaResizerType) => {
             type="number"
             placeholder="Width"
             value={width}
-            className="w-[60px] px-2 py-[10px] text-xs rounded-lg bg-glass outline-transparent"
+            className="md:w-[60px] w-[40px] md:px-2 px-1 py-[10px] text-xs rounded-lg bg-glass outline-transparent"
             onChange={(e) => setWidth(parseInt(e.target.value))}
           />
           <input
             type="number"
             placeholder="Height"
             value={height}
-            className="w-[60px]  px-2 py-[10px] text-xs rounded-lg bg-glass outline-transparent"
+            className="md:w-[60px] w-[40px] md:px-2 px-1 py-[10px] text-xs rounded-lg bg-glass outline-transparent"
             onChange={(e) => setHeight(parseInt(e.target.value))}
           />
         </div>
