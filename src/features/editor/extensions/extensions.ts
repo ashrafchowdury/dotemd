@@ -11,7 +11,6 @@ import Link from "@tiptap/extension-link";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
-import Youtube from "@tiptap/extension-youtube";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import History from "@tiptap/extension-history";
@@ -69,13 +68,6 @@ export const extensions = [
   }),
   UpdatedImage.configure({
     inline: true,
-  }),
-  Youtube.configure({
-    inline: true,
-    width: 480,
-    height: 320,
-    controls: false,
-    allowFullscreen: false,
   }),
   History,
   ListItem,
