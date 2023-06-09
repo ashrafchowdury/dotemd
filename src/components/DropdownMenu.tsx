@@ -45,7 +45,7 @@ const DropdownMenu = () => {
                 href="/doc"
                 className=" px-3 py-2 my-1 text-sm text-start font-medium rounded-md duration-300"
               >
-                Doc
+                Documentation
               </Link>
               {currentUser ? (
                 <button

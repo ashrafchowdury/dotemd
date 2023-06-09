@@ -23,8 +23,7 @@ const Footer = () => {
         <div className="flex flex-col md:items-start items-center">
           <Logo />
           <p className="md:text-[16px] text-sm mt-6 mb-8 md:w-[400px] w-[300px] md:text-start text-center">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto ea
-            quidem reprehenderit.
+            Use the tool and create something stunning and asthetically blezzing
           </p>
           <div className=" flex items-center space-x-4">
             <Link href={githubLink} target="_blank">
@@ -45,11 +44,8 @@ const Footer = () => {
             </p>
             <div className="md:text-[16px] text-sm flex flex-col md:items-start items-center space-y-5 mt-4 ">
               <Link href="/">Home</Link>
-              <Link href="/">Feaures</Link>
+              <Link href="#features">Feaures</Link>
               <Link href="/about">About Us</Link>
-              <Link href={developerLink} target="_blank">
-                Developer
-              </Link>
             </div>
           </div>
           <div>
@@ -70,11 +66,14 @@ const Footer = () => {
       <div className=" w-full flex md:flex-row flex-col md:items-start items-center justify-between mb-5">
         <div>
           <Link href={developerLink} target="_blank">
-            Desigend & developed by Ashraf
+            Desigend & developed by
+            <span className="ml-1 whitespace-nowrap underline underline-offset-[6px] decoration-1 decoration-wavy decoration-secondary">
+              Ashraf Chowdury
+            </span>
           </Link>
         </div>
         <p className="md:text-sm text-xs md:mt-0 mt-5">
-          ©2023 All rights reserved by ashrafchowdury
+          ©2023 All rights reserved by dotemd
         </p>
       </div>
     </footer>

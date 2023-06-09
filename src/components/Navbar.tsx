@@ -13,18 +13,17 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className=" w-full md:h-[100px] h-[80px] flex items-center justify-between">
-      <div className=" flex items-center">
-        <Logo />
-        {pathname != "/editor" && (
-          <div className="pageLinks lg:flex hidden items-center ml-8">
-            <Link href="/">Home</Link>
-            <Link href="/editor">Editor</Link>
-            <Link href="/doc">Documentation</Link>
-            <Link href="/about">About</Link>
-          </div>
-        )}
-      </div>
+    <nav className=" w-full md:h-[120px] h-[80px] flex items-center justify-between">
+      <Logo />
+      {pathname != "/editor" && (
+        <div className="pageLinks fixed z-40 top-9 center w-[420px] h-[55px] rounded-lg bg-glass lg:flex lg:items-center lg:justify-center hidden ">
+          <Link href="/">Home</Link>
+          <Link href="/editor">Editor</Link>
+          <Link href="/doc">Documentation</Link>
+          <Link href="/about">About</Link>
+        </div>
+      )}
+
       <div className=" flex items-center">
         <Link href={githubLink} target="_blank">
           <Button style="!p-2">
