@@ -15,7 +15,9 @@ const FeatureCard = () => {
             <p className=" md:text-lg text-[16px] font-semibold mt-6 mb-3">
               {data.title}
             </p>
-            <p className=" md:text-[16px] text-sm font-light">{data.about}</p>
+            <p className=" md:text-[16px] md:leading-6 text-sm font-light">
+              {data.about}
+            </p>
           </div>
         );
       })}

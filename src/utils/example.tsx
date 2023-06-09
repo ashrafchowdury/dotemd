@@ -7,17 +7,17 @@ type ExampleType = {
 
 export const example: ExampleType[] = [
   {
-    img: "./assets/example.svg",
-    title: "Readme.md file",
+    img: "./assets/templateOne.svg",
+    title: "Dotemd",
     about:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum exercitationem cum, doloribus quae tempora aliquid?",
-    link: "",
+      "The Readme.md file showcases the impressive capabilities of our editor, demonstrating its power in creating stunning markdown files.",
+    link: "https://github.com/ashrafchowdury/dotemd#readme",
   },
   {
-    img: "./assets/example.svg",
-    title: "Contrubuting.md file",
+    img: "./assets/templateTwo.svg",
+    title: "Issue-Maker",
     about:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum exercitationem cum, doloribus quae tempora aliquid?",
-    link: "",
+      "We have creaed this Readme.md file using our editor in just 2 minutes, it shows that how poerful is our editor.",
+    link: "https://github.com/ashrafchowdury/issue-maker#readme",
   },
 ];
