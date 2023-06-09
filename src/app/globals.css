@@ -152,7 +152,7 @@
     @apply !bg-glass md:!p-5 !p-3 md:text-[16px] text-sm !rounded-lg;
   }
   .editor p a {
-    @apply !text-primary flex items-center;
+    @apply !text-primary inline;
   }
 
   /* style placeholder */
