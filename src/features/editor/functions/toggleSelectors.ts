@@ -10,17 +10,6 @@ export const toggleSelectors = (
 ) => {
   const itemSelect = () => selectItem(position);
   const editorChain = () => editor.chain().focus();
-  const toggleToast = (title: string, event: any) =>
-    toaster({
-      title: title,
-      input: true,
-      type: "alert",
-      btnOne: {
-        title: "Insert Link",
-        onclcik: event,
-      },
-      toastRef: selectorRef,
-    });
 
   if (selector?.[1] === "BlockQuote") {
     itemSelect();
@@ -36,16 +25,16 @@ export const toggleSelectors = (
       const mediaLink = selectorRef.current?.value;
       editor.commands.setImage({ src: mediaLink });
     };
-
-    toggleToast("Image Link", handleInsertImage);
-    itemSelect();
-  } else if (selector?.[1] == "Video") {
-    const handleInsertVideo = () => {
-      const mediaLink = selectorRef.current?.value;
-      editorChain().setYoutubeVideo({ src: mediaLink }).run();
-    };
-
-    toggleToast("YouTube Link", handleInsertVideo);
+    toaster({
+      title: "Image Link",
+      input: true,
+      type: "alert",
+      btnOne: {
+        title: "Insert Link",
+        onclcik: handleInsertImage,
+      },
+      toastRef: selectorRef,
+    });
     itemSelect();
   } else {
     itemSelect();

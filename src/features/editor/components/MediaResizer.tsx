@@ -19,16 +19,11 @@ const MediaResizer = ({ setisLink }: MediaResizerType) => {
         ".ProseMirror-selectednode"
       ) as HTMLImageElement;
       // this selector helps us to get iframe info
-      const videoInfo = document.querySelector(
-        ".ProseMirror-selectednode iframe"
-      ) as HTMLImageElement;
-      // taking value from one of them
-      const mediaInfo = videoInfo ?? imageInfo;
 
-      if (mediaInfo) {
-        setWidth(mediaInfo.width);
-        setHeight(mediaInfo.height);
-        setLink(mediaInfo.src);
+      if (imageInfo) {
+        setWidth(imageInfo.width);
+        setHeight(imageInfo.height);
+        setLink(imageInfo.src);
       }
     };
     getMediaInfo();

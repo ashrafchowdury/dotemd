@@ -13,7 +13,6 @@ export type TipTapEditorFormatType = {
   BLOCKQUOTE: any;
   CODE: any;
   IMAGE: any;
-  VIDEO: any;
   TABLE: any;
   RULE: any;
 };
