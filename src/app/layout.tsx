@@ -22,7 +22,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon" />
       <body
         className={`${notoFont.className} xl:w-[1250px] lg:w-[1020px] md:w-[750px] sm:w-[550px] w-[95%] mx-auto`}
       >
