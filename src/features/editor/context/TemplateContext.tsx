@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useRef } from "react";
 import { toast } from "react-hot-toast";
+import toaster from "@/components/ui/toaster";
 import { database } from "@/config/appwriteConfig";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../../../context/AuthContext";
@@ -16,11 +17,12 @@ type TemplatesType = {
 type TemplateContextType = {
   publicTemplates: TemplatesType;
   userTemplates: TemplatesType;
+  documentId: string;
+  setDocumentId: React.Dispatch<React.SetStateAction<string>>;
   isLoading: boolean;
   getUserTemplates: () => void;
-  saveUserTemplates: (title: string) => void;
+  saveAndUpdateTemplates: () => void;
   getPublicTemplates: () => void;
-  updateUserTemplates: (docId: string) => void;
   deleteUserTemplates: (docId: string) => void;
 };
 
@@ -36,10 +38,13 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
 }: ChildrenType) => {
   const [publicTemplates, setPublicTemplates] = useState<TemplatesType>([]);
   const [userTemplates, setUserTemplates] = useState<TemplatesType>([]);
+  const [documentId, setDocumentId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  // refs
+  const inputRef = useRef<HTMLInputElement>(null);
   // custom hooks
   const { currentUser } = useAuth();
-  const { editor } = useEditor();
+  const { editor, minText } = useEditor();
   // enviroment variables
   const databaseId = `${process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID}`;
   const collectionId = `${process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID}`;
@@ -74,14 +79,18 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
     }
   };
 
-  const saveUserTemplates = async (title: string) => {
+  const saveUserTemplate = async () => {
     if (userTemplates.length >= 3) {
-      toast.error("You reched your limit");
+      toast.error("You have reached your limits");
+    } else if (!currentUser) {
+      toast.error("Log In to your account to save file");
+    } else if (!minText) {
+      toast.error("Write some text to save the file");
     } else {
       try {
         await database.createDocument(databaseId, collectionId, uuidv4(), {
           template: editor?.getHTML(), // attribute and value
-          title: title,
+          title: inputRef.current?.value ?? "Markdown File",
           userId: `${currentUser?.$id}`,
         });
         toast.success("Save data successfully 👍");
@@ -92,14 +101,35 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
     }
   };
 
-  const updateUserTemplates = async (docId: string) => {
+  const updateUserTemplate = async () => {
     try {
-      await database.updateDocument(databaseId, collectionId, docId);
-      getUserTemplates();
+      await database.updateDocument(databaseId, collectionId, documentId, {
+        template: editor?.getHTML(),
+        title: inputRef.current?.value ?? "Markdown File",
+        userId: `${currentUser?.$id}`,
+      });
       toast.success("Template updated successfully");
+      setDocumentId("");
+      getUserTemplates();
     } catch (error) {
       toast.error("Something went wrong!");
     }
+  };
+
+  const saveAndUpdateTemplates = () => {
+    toaster({
+      title: `${documentId ? "Update" : "Save"} Template`,
+      type: "alert",
+      input: true,
+      toastRef: inputRef,
+      btnOne: { title: "Cancel", onclcik: () => null },
+      btnTwo: {
+        title: `${documentId ? "Update" : "Save"} File`,
+        onclcik: () => {
+          documentId ? updateUserTemplate() : saveUserTemplate();
+        },
+      },
+    });
   };
 
   const deleteUserTemplates = async (docId: string) => {
@@ -115,11 +145,12 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
   const value: TemplateContextType = {
     publicTemplates,
     userTemplates,
+    documentId,
+    setDocumentId,
     isLoading,
     getPublicTemplates,
-    saveUserTemplates,
+    saveAndUpdateTemplates,
     getUserTemplates,
-    updateUserTemplates,
     deleteUserTemplates,
   };
 

@@ -10,12 +10,18 @@ import Link from "next/link";
 const Templates = () => {
   const { isTemplate, editor, setIsTemplate } = useEditor();
   const { currentUser } = useAuth();
-  const { publicTemplates, userTemplates, deleteUserTemplates, isLoading } =
-    useTemplates();
+  const {
+    publicTemplates,
+    userTemplates,
+    deleteUserTemplates,
+    isLoading,
+    setDocumentId,
+  } = useTemplates();
 
-  const handleInsertData = (template: string) => {
+  const handleInsertData = (template: string, docId?: string) => {
     editor?.commands.clearContent();
     editor?.commands.insertContent(template);
+    docId && setDocumentId(docId);
     setIsTemplate(false);
   };
 
@@ -57,7 +63,7 @@ const Templates = () => {
                 >
                   <div
                     className="flex items-center overflow-hidden whitespace-nowrap"
-                    onClick={() => handleInsertData(data.template)}
+                    onClick={() => handleInsertData(data.template, data.$id)}
                   >
                     <FileIcon style=" text-sm md:text-[16px] lg:text-lg" />{" "}
                     <p className=" ml-2 text-sm md:text-sm lg:text-[16px]">

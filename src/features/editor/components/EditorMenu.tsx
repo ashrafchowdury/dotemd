@@ -19,7 +19,6 @@ import { useAuth } from "@/context/AuthContext";
 import { copyCode } from "../functions/copyCode";
 import { clearCode } from "../functions/clearCode";
 import { downloadFile } from "../functions/downloadFile";
-import { saveTemplates } from "../functions/saveTemplates";
 
 const EditorMenu = () => {
   const { isTemplate, setIsTemplate, setIsKeyShortcut, editor, minText } =
@@ -28,9 +27,11 @@ const EditorMenu = () => {
   const {
     publicTemplates,
     userTemplates,
-    saveUserTemplates,
+    saveAndUpdateTemplates,
     getUserTemplates,
     getPublicTemplates,
+    documentId,
+    setDocumentId,
   } = useTemplates();
   //  this ref helps us to get value from toaster input
   const inputRef = useRef<HTMLInputElement>(null);
@@ -91,9 +92,7 @@ const EditorMenu = () => {
         <div className=" w-[1px] h-6 bg-glass"></div>
         <Button
           style="!p-2"
-          onclick={() =>
-            saveTemplates(inputRef, saveUserTemplates, currentUser, minText)
-          }
+          onclick={() => saveAndUpdateTemplates()}
           title="Save File"
         >
           <SaveIcon />
@@ -117,7 +116,10 @@ const EditorMenu = () => {
 
         <Button
           style="!p-2"
-          onclick={() => minText && clearCode(editor)}
+          onclick={() => {
+            minText && clearCode(editor);
+            documentId && setDocumentId("");
+          }}
           title="Clearn Editor"
         >
           <CroseIcon />
