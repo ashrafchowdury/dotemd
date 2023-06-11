@@ -19,7 +19,7 @@ export const downloadFile = (
       toastRef: inputRef,
       btnOne: { title: "Cancel", onclcik: () => null },
       btnTwo: {
-        title: "Save File",
+        title: "Download File",
         onclcik: () => {
           try {
             const a = document.createElement("a");

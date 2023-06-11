@@ -11,33 +11,19 @@ export const htmlToMarkdown = (editor: Editor) => {
       if (node.tagName === "P") {
         return node.innerHTML; // Replace the <p> element with its content
       } else if (node.tagName === "TABLE") {
-        node
-          .querySelectorAll("p")
-          .forEach((p: any) => p.replaceWith(...p.childNodes)); // Remove any <p> elements inside the <table>
+        node.querySelectorAll("p").forEach((p: any) => {
+          const innerMarkdown = turndownService.turndown(p.innerHTML);
+          p.innerHTML = innerMarkdown.trim(); // Convert the inner content of <p> to markdown
+          p.replaceWith(...p.childNodes);
+        });
       }
       return node?.outerHTML;
     },
   });
+
   turndownService.addRule("peragraph", {
     filter: "p",
     replacement: function (content, node: any) {
-      const innerMarkdown = turndownService.turndown(node.innerHTML);
-      if (node.hasAttribute("style")) {
-        //checking wheather the p tag has style att ot not
-        const style = node.getAttribute("style");
-        if (style.includes("text-align: start")) {
-          if (!content.trim()) {
-            return ""; // empty content, ignore the <p> tag
-          } else {
-            return innerMarkdown.trim();
-          }
-          // We are using div to center inner elements
-        } else if (style.includes("text-align: center")) {
-          return `<div align="center"> \n\n ${innerMarkdown.trim()} \n\n </div>`;
-        } else if (style.includes("text-align: right")) {
-          return `<div align="right"> \n\n ${innerMarkdown.trim()} \n\n </div>`;
-        }
-      }
       return `\n${content}\n `;
     },
   });
@@ -85,15 +71,20 @@ export const htmlToMarkdown = (editor: Editor) => {
   turndownService.addRule("image", {
     filter: "img",
     replacement: function (content, node: any) {
-      if (node.hasAttribute("width")) {
-        const src = node.getAttribute("src");
-        const width = node.getAttribute("width");
-        const height = node.getAttribute("height");
-
-        return `<img src="${src}" width="${width}" height="${height}" />`;
+      const src = node.getAttribute("src");
+      const width = node.getAttribute("width");
+      const height = node.getAttribute("height");
+      const style = node.getAttribute("style");
+      if (node.hasAttribute("width") || node.hasAttribute("style")) {
+        if (style.includes("text-align: center")) {
+          return `<p align="center"><img src="${src}" width="${width}" height="${height}" /></p>`;
+        } else if (style.includes("text-align: right")) {
+          return `<p align="right"><img src="${src}" width="${width}" height="${height}" /></p>`;
+        } else {
+          return `<img src="${src}" width="${width}" height="${height}" />`;
+        }
       } else {
-        let src = node.getAttribute("src") || "";
-        return `![image](${src})`;
+        return `\n![image](${src})\n`;
       }
     },
   });
@@ -105,9 +96,7 @@ export const htmlToMarkdown = (editor: Editor) => {
     },
   });
 
-  const markdownCode = turndownService.turndown(
-    editor?.getHTML().replace("<p></p><p></p>", `\n<br>\n `)
-  );
+  const markdownCode = turndownService.turndown(editor?.getHTML());
 
   // convert the html table with markdown table
   if (editor.getHTML().includes("<table>")) {
