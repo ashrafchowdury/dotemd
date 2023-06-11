@@ -37,6 +37,7 @@ export default function RootLayout({
                 color: "white",
                 padding: "10px 18px",
               },
+              duration: 2000,
             }}
           />
           <Navbar />

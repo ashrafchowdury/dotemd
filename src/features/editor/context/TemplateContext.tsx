@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, createContext, useContext, useRef } from "react";
+import React, { useState, createContext, useContext } from "react";
 import { toast } from "react-hot-toast";
 import toaster from "@/components/ui/toaster";
 import { database } from "@/config/appwriteConfig";
@@ -40,11 +40,9 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
   const [userTemplates, setUserTemplates] = useState<TemplatesType>([]);
   const [documentId, setDocumentId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  // refs
-  const inputRef = useRef<HTMLInputElement>(null);
   // custom hooks
   const { currentUser } = useAuth();
-  const { editor, minText } = useEditor();
+  const { editor, minText, toastRef } = useEditor();
   // enviroment variables
   const databaseId = `${process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID}`;
   const collectionId = `${process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID}`;
@@ -80,24 +78,16 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
   };
 
   const saveUserTemplate = async () => {
-    if (userTemplates.length >= 3) {
-      toast.error("You have reached your limits");
-    } else if (!currentUser) {
-      toast.error("Log In to your account to save file");
-    } else if (!minText) {
-      toast.error("Write some text to save the file");
-    } else {
-      try {
-        await database.createDocument(databaseId, collectionId, uuidv4(), {
-          template: editor?.getHTML(), // attribute and value
-          title: inputRef.current?.value ?? "Markdown File",
-          userId: `${currentUser?.$id}`,
-        });
-        toast.success("Save data successfully 👍");
-        getUserTemplates();
-      } catch (error) {
-        toast.error("Something went wrong! 🤷‍♀️");
-      }
+    try {
+      await database.createDocument(databaseId, collectionId, uuidv4(), {
+        template: editor?.getHTML(), // attribute and value
+        title: toastRef.current?.value ?? "Markdown File",
+        userId: `${currentUser?.$id}`,
+      });
+      toast.success("Save data successfully 👍");
+      getUserTemplates();
+    } catch (error) {
+      toast.error("Something went wrong! 🤷‍♀️");
     }
   };
 
@@ -105,7 +95,7 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
     try {
       await database.updateDocument(databaseId, collectionId, documentId, {
         template: editor?.getHTML(),
-        title: inputRef.current?.value ?? "Markdown File",
+        title: toastRef.current?.value ?? "Markdown File",
         userId: `${currentUser?.$id}`,
       });
       toast.success("Template updated successfully");
@@ -117,19 +107,27 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
   };
 
   const saveAndUpdateTemplates = () => {
-    toaster({
-      title: `${documentId ? "Update" : "Save"} Template`,
-      type: "alert",
-      input: true,
-      toastRef: inputRef,
-      btnOne: { title: "Cancel", onclcik: () => null },
-      btnTwo: {
-        title: `${documentId ? "Update" : "Save"} File`,
-        onclcik: () => {
-          documentId ? updateUserTemplate() : saveUserTemplate();
+    if (userTemplates.length >= 3) {
+      toast.error("You have reached your limits");
+    } else if (!currentUser) {
+      toast.error("Log In to your account to save file");
+    } else if (!minText) {
+      toast.error("Write some text to save the file");
+    } else {
+      toaster({
+        title: `${documentId ? "Update" : "Save"} Template`,
+        type: "alert",
+        input: true,
+        toastRef: toastRef,
+        btnOne: { title: "Cancel", onclcik: () => null },
+        btnTwo: {
+          title: `${documentId ? "Update" : "Save"} File`,
+          onclcik: () => {
+            documentId ? updateUserTemplate() : saveUserTemplate();
+          },
         },
-      },
-    });
+      });
+    }
   };
 
   const deleteUserTemplates = async (docId: string) => {

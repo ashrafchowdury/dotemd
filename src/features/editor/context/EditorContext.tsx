@@ -10,6 +10,7 @@ type EditorContextType = {
   editor: any;
   editorRef: Ref<PureEditorContent>;
   minText: boolean | null;
+  toastRef: any;
 };
 
 export const EditorContext = createContext<EditorContextType | null>(null);
@@ -23,13 +24,14 @@ const EditorDataProvider = ({ children }: { children: React.ReactNode }) => {
 
   //refs
   const editorRef = useRef(null);
+  const toastRef = useRef<any>(null); // this refs is used to take value from toasts
 
   // hooks
   const editor = useTiptap({
     extensions: extensions,
   });
 
-  const minText: boolean | null = editor && editor?.getText().length >= 10;
+  const minText: boolean | null = editor && editor?.getHTML().length >= 16;
 
   const value: EditorContextType = {
     isTemplate,
@@ -39,6 +41,7 @@ const EditorDataProvider = ({ children }: { children: React.ReactNode }) => {
     editor,
     editorRef,
     minText,
+    toastRef,
   };
   return (
     <EditorContext.Provider value={value}>{children}</EditorContext.Provider>

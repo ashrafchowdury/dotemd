@@ -34,36 +34,52 @@ const InlineSelector = () => {
           pluginKey="bubbleMenuForText"
           shouldShow={({ editor, view, state, oldState, from, to }) => {
             // only show out of table
-            return !editor?.isActive("table") && from !== to;
+            return from !== to;
           }}
         >
           <section
             className="inlineSelector flex items-center justify-between space-x-2 py-1 px-2 bg-dark border border-glass rounded-lg"
             style={{ display: isLink ? "none" : "flex" }}
           >
-            <button
-              onClick={() => toggleSelector().setTextAlign("left").run()}
-              className={`${isActive({ textAlign: "left" })}`}
-            >
-              <AlignLeftIcon />
-            </button>
-            <button
-              onClick={() =>
-                editor.chain().focus().setTextAlign("center").run()
-              }
-              className={`${isActive({ textAlign: "center" })}`}
-            >
-              <AlignCenterIcon />
-            </button>
-            <button
-              onClick={() => toggleSelector().setTextAlign("right").run()}
-              className={`${isActive({ textAlign: "right" })}`}
-            >
-              <AlignRightIcon />
-            </button>
-
-            {!(editor.isActive("image") || editor.isActive("youtube")) && (
+            {!editor.isActive("image") && (
               <>
+                <button
+                  onClick={() =>
+                    toggleSelector().toggleHeading({ level: 1 }).run()
+                  }
+                  className={`${
+                    editor.isActive("heading", { level: 1 })
+                      ? "text-primary"
+                      : ""
+                  } md:!text-sm !text-xs`}
+                >
+                  H1
+                </button>
+                <button
+                  onClick={() =>
+                    toggleSelector().toggleHeading({ level: 2 }).run()
+                  }
+                  className={`${
+                    editor.isActive("heading", { level: 2 })
+                      ? "text-primary"
+                      : ""
+                  } md:!text-sm !text-xs`}
+                >
+                  H2
+                </button>
+                <button
+                  onClick={() =>
+                    toggleSelector().toggleHeading({ level: 3 }).run()
+                  }
+                  className={`${
+                    editor.isActive("heading", { level: 3 })
+                      ? "text-primary"
+                      : ""
+                  } md:!text-sm !text-xs`}
+                >
+                  H3
+                </button>
+                <div className=" w-[1px] h-5 bg-glass"></div>
                 <button
                   onClick={() => toggleSelector().toggleBold().run()}
                   className={`${isActive("bold")}`}
@@ -95,7 +111,31 @@ const InlineSelector = () => {
                 </button>
               </>
             )}
-
+            {editor.isActive("image") && (
+              <>
+                <button
+                  onClick={() => toggleSelector().setTextAlign("left").run()}
+                  className={`${isActive({ textAlign: "left" })}`}
+                >
+                  <AlignLeftIcon />
+                </button>
+                <button
+                  onClick={() =>
+                    editor.chain().focus().setTextAlign("center").run()
+                  }
+                  className={`${isActive({ textAlign: "center" })}`}
+                >
+                  <AlignCenterIcon />
+                </button>
+                <button
+                  onClick={() => toggleSelector().setTextAlign("right").run()}
+                  className={`${isActive({ textAlign: "right" })}`}
+                >
+                  <AlignRightIcon />
+                </button>
+                <div className=" w-[1px] h-5 bg-glass"></div>
+              </>
+            )}
             <button
               onClick={() =>
                 editor.isActive("link")

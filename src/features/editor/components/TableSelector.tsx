@@ -21,7 +21,7 @@ const TableSelector = () => {
           pluginKey="bubbleMenuForTable"
           shouldShow={({ editor, view, state, oldState, from, to }) => {
             // only show if table are active
-            return editor?.isActive("table") && from !== to;
+            return editor?.isActive("table") && from == to;
           }}
         >
           <section className="inlineSelector flex items-center justify-between space-x-2 py-1 px-2 bg-dark border border-glass rounded-lg">

@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import Button from "@/components/ui/Button";
 import {
   SaveIcon,
@@ -21,8 +20,14 @@ import { clearCode } from "../functions/clearCode";
 import { downloadFile } from "../functions/downloadFile";
 
 const EditorMenu = () => {
-  const { isTemplate, setIsTemplate, setIsKeyShortcut, editor, minText } =
-    useEditor();
+  const {
+    isTemplate,
+    setIsTemplate,
+    setIsKeyShortcut,
+    editor,
+    minText,
+    toastRef,
+  } = useEditor();
   const { currentUser } = useAuth();
   const {
     publicTemplates,
@@ -33,8 +38,6 @@ const EditorMenu = () => {
     documentId,
     setDocumentId,
   } = useTemplates();
-  //  this ref helps us to get value from toaster input
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleGetTemplates = () => {
     isTemplate ? setIsTemplate(false) : setIsTemplate(true);
@@ -100,7 +103,7 @@ const EditorMenu = () => {
 
         <Button
           style="!p-2"
-          onclick={() => downloadFile(inputRef, editor, minText)}
+          onclick={() => downloadFile(toastRef, editor, minText)}
           title="Download File"
         >
           <DownloadIcon />
