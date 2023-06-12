@@ -144,7 +144,11 @@ const InlineSelector = () => {
               }
               className={`${isActive("link")}`}
             >
-              {editor?.isActive("link") ? <UnLinktIcon /> : <LinktIcon />}
+              {editor?.isActive("link") ? (
+                <UnLinktIcon style="md:text-sm text-xs" />
+              ) : (
+                <LinktIcon />
+              )}
             </button>
 
             {/** This icons is only for image & iframe***/}

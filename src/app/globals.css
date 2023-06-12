@@ -145,14 +145,25 @@
   .editor blockquote p {
     quotes: "\201C""\201D""\2018""\2019";
   }
+
+  /*** CodeBlock styling ***/
   .editor p code {
-    @apply px-2 py-1 bg-glass rounded-lg;
+    @apply p-1 bg-glass rounded-md;
+  }
+  .editor .ProseMirror h1 code {
+    @apply md:text-3xl text-2xl p-1 bg-glass rounded-md;
+  }
+  .editor .ProseMirror h2 code {
+    @apply md:text-2xl text-xl p-1 bg-glass rounded-md;
+  }
+  .editor .ProseMirror h3 code {
+    @apply md:text-[21px] text-lg p-1 bg-glass rounded-md;
   }
   .editor pre {
     @apply !bg-glass md:!p-5 !p-3 md:text-[16px] text-sm !rounded-lg;
   }
-  .editor p a {
-    @apply !text-primary inline;
+  .editor a {
+    @apply !text-secondary inline;
   }
 
   /* style placeholder */
@@ -209,6 +220,9 @@
     overflow-x: auto;
   }
   /* editor Image stylig */
+  .editor img {
+    @apply cursor-pointer;
+  }
   .editor p[style="text-align: center"]:has(img) {
     @apply flex flex-wrap justify-center items-center;
   }
@@ -219,12 +233,15 @@
     @apply flex flex-wrap justify-start items-center;
   }
   .editor p img {
-    @apply mx-1 object-cover cursor-pointer;
+    @apply mx-1 object-cover;
   }
   .editor .ProseMirror p img[style="text-align: center"] {
     @apply mx-auto;
   }
   .editor .ProseMirror p img[style="text-align: right"] {
     @apply block float-right;
+  }
+  .editor .ProseMirror p a:has(img) {
+    @apply w-full inline;
   }
 }
