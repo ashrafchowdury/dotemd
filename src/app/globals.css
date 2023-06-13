@@ -221,27 +221,18 @@
   }
   /* editor Image stylig */
   .editor img {
-    @apply cursor-pointer;
-  }
-  .editor p[style="text-align: center"]:has(img) {
-    @apply flex flex-wrap justify-center items-center;
-  }
-  .editor p[style="text-align: right"]:has(img) {
-    @apply flex flex-wrap justify-end items-center;
+    @apply cursor-pointer mx-1 object-cover;
   }
   .editor p:has(img) {
     @apply flex flex-wrap justify-start items-center;
   }
-  .editor p img {
-    @apply mx-1 object-cover;
+  .editor p[style="text-align: center"]:has(img) {
+    @apply flex flex-wrap justify-center items-center w-full;
   }
-  .editor .ProseMirror p img[style="text-align: center"] {
-    @apply mx-auto;
+  .editor p[style="text-align: right"]:has(img) {
+    @apply flex flex-wrap justify-end items-center;
   }
-  .editor .ProseMirror p img[style="text-align: right"] {
-    @apply block float-right;
-  }
-  .editor .ProseMirror p a:has(img) {
-    @apply w-full inline;
+  .editor .ProseMirror .ProseMirror-separator {
+    @apply !hidden;
   }
 }

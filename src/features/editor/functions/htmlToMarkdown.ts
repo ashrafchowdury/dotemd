@@ -24,19 +24,40 @@ export const htmlToMarkdown = (editor: Editor) => {
   turndownService.addRule("peragraph", {
     filter: "p",
     replacement: function (content, node: any) {
-      return `\n${content}\n `;
+      if (
+        node.hasAttribute("style") &&
+        node.getAttribute("style") !== "text-align: start"
+      ) {
+        const alignment = node
+          .getAttribute("style")
+          .replace("text-align: ", "");
+        return `\n<p align="${alignment}">${content}<p>\n `;
+      } else {
+        return `\n${content}\n `;
+      }
     },
   });
 
   turndownService.addRule("headings", {
     filter: ["h1", "h2", "h3"],
     replacement: function (content, node: any) {
-      if (node.tagName === "H1") {
-        return `\n# ${content}\n `;
-      } else if (node.tagName === "H2") {
-        return `\n## ${content}\n `;
-      } else if (node.tagName === "H3") {
-        return `\n### ${content}\n `;
+      if (
+        node.hasAttribute("style") &&
+        node.getAttribute("style") !== "text-align: start"
+      ) {
+        const tagName = node.tagName?.toLowerCase();
+        const alignment = node
+          .getAttribute("style")
+          .replace("text-align: ", "");
+        return `\n\n<${tagName} align="${alignment}">${content}</${tagName}>\n`;
+      } else {
+        if (node.tagName === "H1") {
+          return `\n\n# ${content}\n `;
+        } else if (node.tagName === "H2") {
+          return `\n\n## ${content}\n `;
+        } else if (node.tagName === "H3") {
+          return `\n\n### ${content}\n `;
+        }
       }
       return node?.outerHTML;
     },
@@ -57,7 +78,7 @@ export const htmlToMarkdown = (editor: Editor) => {
   turndownService.addRule("blockquote", {
     filter: "blockquote",
     replacement: function (content) {
-      return `> ${content.trimStart()}`;
+      return `\n> ${content.trimStart()}\n`;
     },
   });
 
@@ -74,17 +95,12 @@ export const htmlToMarkdown = (editor: Editor) => {
       const src = node.getAttribute("src");
       const width = node.getAttribute("width");
       const height = node.getAttribute("height");
-      const style = node.getAttribute("style");
-      if (node.hasAttribute("width") || node.hasAttribute("style")) {
-        if (style.includes("text-align: center")) {
-          return `<p align="center"><img src="${src}" width="${width}" height="${height}" /></p>`;
-        } else if (style.includes("text-align: right")) {
-          return `<p align="right"><img src="${src}" width="${width}" height="${height}" /></p>`;
-        } else {
-          return `<img src="${src}" width="${width}" height="${height}" />`;
-        }
+      if (node.hasAttribute("width") && !node.hasAttribute("style")) {
+        return `\n<img src="${src}" width="${width}" height="${height}" />\n`;
+      } else if (!node.hasAttribute("width") && node.hasAttribute("style")) {
+        return `\n<img src="${src}"  />\n`;
       } else {
-        return `\n![image](${src})\n`;
+        return `\n![image](${src})\n`.trimStart();
       }
     },
   });
@@ -96,13 +112,30 @@ export const htmlToMarkdown = (editor: Editor) => {
     },
   });
 
+  turndownService.addRule("link", {
+    filter: "a",
+    replacement: function (content, node: any) {
+      if (
+        node.parentNode.tagName &&
+        node.parentNode.hasAttribute("style") &&
+        node.parentNode.getAttribute("style") !== "text-align: start"
+      ) {
+        return `${node?.outerHTML}\n`; // Skip converting the link
+      }
+      // Convert the link as usual
+      return ` [${content}](${node.getAttribute("href")}) `.trimStart();
+    },
+  });
+
   const markdownCode = turndownService.turndown(editor?.getHTML());
 
   // convert the html table with markdown table
   if (editor.getHTML().includes("<table>")) {
     const replaceAttributes = markdownCode
       .replace(/colspan="1" rowspan="1"/g, "")
-      .replace(/colwidth/g, "width");
+      .replace(/colwidth/g, "width")
+      .replaceAll('style="text-align: center"', "")
+      .replaceAll('gstyle="text-align: right"', "");
 
     const originalData = replaceAttributes;
 
@@ -137,6 +170,9 @@ export const htmlToMarkdown = (editor: Editor) => {
 
     return { markdownCode: markdownTable };
   } else {
-    return { markdownCode };
+    const markdown = markdownCode
+      .replaceAll('style="text-align: center"', "")
+      .replaceAll('gstyle="text-align: right"', "");
+    return { markdownCode: markdown };
   }
 };
