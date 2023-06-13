@@ -13,6 +13,27 @@ export const metadata = {
   title: "Create Beautiful Markdown Files in Seconds",
   description:
     "The ultimate markdown file creation tool. Design stunning markdown files effortlessly with our intuitive editor. Save time, unleash creativity, and boost productivity. Get started now",
+  keywords: [
+    "markdown",
+    "markdown editor",
+    "Readme.md maker",
+    "markdown file maker",
+  ],
+  openGraph: {
+    title: "Create Markdown Files Within Seconds",
+    description:
+      "The ultimate markdown file creation tool. Design stunning markdown files effortlessly with our intuitive editor.",
+    siteName: "dotemd",
+    url: "https://dotemd.vercel.app/",
+    theme: "dark",
+    images: [
+      {
+        url: "https://cloud.appwrite.io/v1/storage/buckets/647f538eb065d9f2b8d8/files/648827c7db07d94a2a93/view?project=645dc450a76ad06dddca&mode=admin",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
