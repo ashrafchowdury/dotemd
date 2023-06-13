@@ -56,7 +56,7 @@ export const extensions = [
     },
   }),
   TextAlign.configure({
-    types: ["image"],
+    types: ["image", "paragraph", "heading"],
   }),
 
   Link.configure({

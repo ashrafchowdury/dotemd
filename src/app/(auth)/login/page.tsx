@@ -61,7 +61,7 @@ const Login = () => {
           />
 
           <label className=" text-sm md:text-[16px] font-medium">
-            Paswword add minimum 8 characters
+            Password add minimum 8 characters
           </label>
           <input
             type="password"
