@@ -13,7 +13,7 @@ type UserDataType = {
 
 type AuthContextType = {
   currentUser: UserDataType | null;
-  setCurrentUser: React.Dispatch<React.SetStateAction<UserDataType | null>>;
+
   isLoading: boolean;
   register: (email: string, password: string) => void;
   forget: (email: string) => void;
@@ -137,10 +137,16 @@ const AuthContextProvider: React.FC<ChildrenType> = ({
   const githubAuth = async () => {
     setIsLoading(true);
     try {
-      account.createOAuth2Session("github");
+      const defaultURL = window.location.origin;
+      account.createOAuth2Session(
+        "github",
+        `${defaultURL}/editor`,
+        `${defaultURL}/login`
+      );
       const data = await account.get();
       setCurrentUser?.(data);
       toast.success("Login successfully");
+      router.push("/editor");
     } catch (error) {
       toast.error("Something went wrong!");
     }
@@ -160,7 +166,6 @@ const AuthContextProvider: React.FC<ChildrenType> = ({
 
   const value: AuthContextType = {
     currentUser,
-    setCurrentUser,
     register,
     logout,
     githubAuth,
