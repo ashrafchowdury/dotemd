@@ -107,10 +107,10 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
   };
 
   const saveAndUpdateTemplates = () => {
-    if (userTemplates.length >= 3) {
-      toast.error("You have reached your limits");
-    } else if (!currentUser) {
+    if (!currentUser) {
       toast.error("Log In to your account to save file");
+    } else if (userTemplates.length >= 3) {
+      toast.error("You have reached your limits");
     } else if (!minText) {
       toast.error("Write some text to save the file");
     } else {
