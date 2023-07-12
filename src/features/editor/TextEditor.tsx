@@ -9,6 +9,7 @@ import TableSelector from "./components/TableSelector";
 import { useLocalData } from "./hooks/useLocalData";
 import ShortCuts from "./components/ShortCuts";
 import EditorSkeleton from "./components/skeleton/EditorSkeleton";
+import ImageResize from "./components/ImageResize";
 
 const TextEditor = () => {
   const { editorRef, editor } = useEditor();
@@ -32,6 +33,7 @@ const TextEditor = () => {
         className="editor"
         onKeyDown={updateLocalData}
       />
+      {editor?.isActive("image") && <ImageResize />}
       {!editor && <EditorSkeleton />}
     </section>
   );

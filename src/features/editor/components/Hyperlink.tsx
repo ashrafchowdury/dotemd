@@ -4,11 +4,11 @@ import { CroseIcon } from "@/components/ui/Icons";
 import { useEditor } from "../context/EditorContext";
 
 type HyperlinkType = {
-  setisLink: React.Dispatch<React.SetStateAction<"link" | "media" | "">>;
+  setIsLink: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Hyperlink = ({ setisLink }: HyperlinkType) => {
-  const [link, setlink] = useState("");
+const Hyperlink = ({ setIsLink }: HyperlinkType) => {
+  const [link, setLink] = useState("");
   const { editor } = useEditor();
 
   return (
@@ -18,7 +18,7 @@ const Hyperlink = ({ setisLink }: HyperlinkType) => {
           <p className=" md:text-sm text-xs font-meduim">🔗 Insert Link</p>{" "}
           <button
             className="  md:text-[16px] text-sm p-2 rounded-lg hover:dark:bg-darkBg duration-300"
-            onClick={() => setisLink("")}
+            onClick={() => setIsLink(false)}
           >
             <CroseIcon />
           </button>
@@ -28,14 +28,14 @@ const Hyperlink = ({ setisLink }: HyperlinkType) => {
           type="link"
           placeholder="🔗 Add Link"
           className="w-full px-3 py-2 md:text-xs text-[10px] rounded-lg bg-glass mt-2 outline-transparent"
-          onChange={(e) => setlink(e.target.value)}
+          onChange={(e) => setLink(e.target.value)}
           autoFocus={true}
         />
         <button
           className=" bg-primary py-1 px-3 md:!mt-7 mt-4 rounded-lg md:text-xs text-[10px]"
           onClick={() => {
             editor?.commands.setLink({ href: link });
-            setisLink("");
+            setIsLink(false);
           }}
         >
           Insert Link

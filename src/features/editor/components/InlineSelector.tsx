@@ -11,13 +11,11 @@ import {
   CodeIcon,
   LinktIcon,
   UnLinktIcon,
-  EditIcon,
 } from "@/components/ui/Icons";
 import Hyperlink from "./Hyperlink";
-import MediaResizer from "./MediaResizer";
 
 const InlineSelector = () => {
-  const [isLink, setisLink] = useState<"link" | "media" | "">("");
+  const [isLink, setIsLink] = useState(false);
   const { editor } = useEditor();
 
   // checking whether the format is active ot not
@@ -105,7 +103,7 @@ const InlineSelector = () => {
               onClick={() =>
                 editor.isActive("link")
                   ? editor.commands.unsetLink()
-                  : setisLink("link")
+                  : setIsLink(true)
               }
               className={`${isActive("link")}`}
             >
@@ -115,17 +113,9 @@ const InlineSelector = () => {
                 <LinktIcon />
               )}
             </button>
-
-            {/** This icons is only for image & iframe***/}
-            {(editor.isActive("image") || editor.isActive("youtube")) && (
-              <button onClick={() => setisLink("media")}>
-                <EditIcon />
-              </button>
-            )}
           </section>
 
-          {isLink == "media" && <MediaResizer setisLink={setisLink} />}
-          {isLink == "link" && <Hyperlink setisLink={setisLink} />}
+          {isLink && <Hyperlink setIsLink={setIsLink} />}
         </BubbleMenu>
       )}
     </>
