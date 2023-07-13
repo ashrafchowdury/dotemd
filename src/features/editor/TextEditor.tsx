@@ -23,7 +23,7 @@ const TextEditor = () => {
     <section className=" w-full">
       <EditorMenu />
       <InlineSelector />
-      <TableSelector />
+      {editor?.isActive("table") && <TableSelector />}
       <ShortCuts />
 
       {/***  TipTap RichText Editor ***/}

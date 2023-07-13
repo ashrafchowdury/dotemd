@@ -40,16 +40,10 @@ export const extensions = [
     emptyEditorClass: "placeholder",
     includeChildren: true,
     placeholder: ({ node }) => {
-      const element: string | undefined = (window.getSelection() as any)
-        ?.baseNode?.offsetParent?.localName;
       if (node.type.name == "heading") {
         return "Heading";
       } else if (node.type.name == "codeBlock") {
         return "Add Code";
-      } else if (element == "th") {
-        return "Table heading";
-      } else if (element == "td") {
-        return "Table info";
       } else {
         return "Type '/' To Open Selector";
       }
