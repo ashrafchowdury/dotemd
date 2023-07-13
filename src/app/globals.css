@@ -204,6 +204,9 @@
   .editor .ProseMirror table p {
     @apply m-0;
   }
+  .editor .ProseMirror table * .is-empty::before {
+    opacity: 0;
+  }
   .editor .ProseMirror .selectedCell:after {
     background: rgba(200, 200, 255, 0.4);
     content: "";
