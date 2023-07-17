@@ -179,6 +179,12 @@
     pointer-events: none;
     float: left;
   }
+  .editor .ProseMirror .is-empty[style="text-align: center"]::before {
+    @apply opacity-0;
+  }
+  .editor .ProseMirror .is-empty[style="text-align: right"]::before {
+    @apply opacity-0;
+  }
   .selection::-webkit-scrollbar-thumb {
     @apply bg-glass;
   }
@@ -205,7 +211,7 @@
     @apply m-0;
   }
   .editor .ProseMirror table * .is-empty::before {
-    opacity: 0;
+    @apply opacity-0;
   }
   .editor .ProseMirror .selectedCell:after {
     background: rgba(200, 200, 255, 0.4);
