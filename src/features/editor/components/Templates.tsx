@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Templates = () => {
   const { isTemplate, editor, setIsTemplate } = useEditor();
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth() ?? {};
   const {
     publicTemplates,
     userTemplates,

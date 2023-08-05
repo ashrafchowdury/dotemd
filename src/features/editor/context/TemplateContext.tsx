@@ -41,7 +41,7 @@ const TemplateContextProvider: React.FC<ChildrenType> = ({
   const [documentId, setDocumentId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   // custom hooks
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth() ?? {};
   const { editor, minText, toastRef } = useEditor();
   // enviroment variables
   const databaseId = `${process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID}`;

@@ -28,7 +28,7 @@ const EditorMenu = () => {
     minText,
     toastRef,
   } = useEditor();
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth() ?? {};
   const {
     publicTemplates,
     userTemplates,

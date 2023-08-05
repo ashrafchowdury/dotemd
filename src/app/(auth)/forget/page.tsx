@@ -6,7 +6,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
 const Forget = () => {
-  const { forget, isLoading, currentUser } = useAuth();
+  const { forget, isLoading, currentUser } = useAuth() ?? {};
   const router = useRouter();
 
   const handleUserForgetEmail = async (event: any) => {
