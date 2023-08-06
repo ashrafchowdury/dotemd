@@ -9,7 +9,7 @@ import { githubLink } from "@/utils/socialLinks";
 import { useAuth } from "@/context/AuthContext";
 
 const Navbar = () => {
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth() ?? {};
   const pathname = usePathname();
 
   return (

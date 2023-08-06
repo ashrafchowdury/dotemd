@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const { register, isLoading, githubAuth, currentUser } = useAuth();
+  const { register, isLoading, githubAuth, currentUser } = useAuth() ?? {};
   const router = useRouter();
 
   const handleUserAuthData = async (event: any) => {

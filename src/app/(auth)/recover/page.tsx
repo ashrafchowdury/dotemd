@@ -5,7 +5,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useSearchParams } from "next/navigation";
 
 const Recover = () => {
-  const { recoverAccount, isLoading } = useAuth();
+  const { recoverAccount, isLoading } = useAuth() ?? {};
   const searchParams = useSearchParams();
   const userId: any = searchParams.get("userId");
   const secret: any = searchParams.get("secret");

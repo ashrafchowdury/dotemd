@@ -8,7 +8,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const DropdownMenu = () => {
   const { isDropdown, setIsDropdown, dropdownRef } = useDropdown();
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout } = useAuth() ?? {};
 
   return (
     <>
